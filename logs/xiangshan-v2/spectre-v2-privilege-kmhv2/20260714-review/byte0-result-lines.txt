@@ -1,0 +1,10 @@
+[v2-privilege] model=sv39-pte-u-isolation attacker=U victim=M isolation=Sv39-PTE-U0 secret=PTE_U0 pmp=permissive-not-boundary satp=sv39 service=machine-ecall round=asm-single-site fixed_marker=-1 secret_offset=0 secret_sz=1 candidates=62 tries=8 train=16 warmup=0 asm_control=0 probe_control=0 probe_mix=1 early_strict=0 asm_style=0
+[v2-privilege] calibration fallback=70 measured=93 threshold=70 fixed=1
+[v2-privilege] control service_return=no-secret direct_secret_access=expect-fault
+[v2-privilege] secret=0000000080007000 channel=0000000080008000 gadget=0000000080000B6A safe_target=0000000080000BCC
+[v2-privilege] isolation U-direct-secret-read fault_seen=1 completed=0 value=0x00 expected=fault u_text=[0000000080002000,0000000080003000) m_secret=0000000080007000
+[v2-privilege] traps=4 train_calls=0 attack_calls=0 asm_round_calls=2 flush_calls=0 exit_calls=1 bad_traps=0 last_mcause=8 last_mepc=0000000080002440 status=0
+[v2-privilege] byte 0: expected=S(0x53) expected_score=2 guess=S(0x53) score=2 second=7(0x37) score=1
+[v2-privilege] byte 0 tries=2 early_stop=1 min_score=2 gap=1
+[v2-privilege] byte 0 top4=S(0x53):2,7(0x37):1,8(0x38):1,9(0x39):1
+[v2-privilege] check=PASS

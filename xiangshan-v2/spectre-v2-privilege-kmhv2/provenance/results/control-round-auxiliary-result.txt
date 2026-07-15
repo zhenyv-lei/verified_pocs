@@ -1,0 +1,5 @@
+Auxiliary result, not used as the baseline conclusion:
+- offset 2 was rerun with V2_ASM_CONTROL_ROUND=1
+- that rerun produced expected=C guess=C check=PASS
+- this is a separate exploratory/control-round run and should not replace the baseline offset-2 record
+- baseline-only recovered string remains S3preT, with offset 2 failing

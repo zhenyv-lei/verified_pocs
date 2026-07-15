@@ -1,0 +1,6 @@
+addr=0x00000000F0000018 expected=S hits1=3 guess=S hits2=0 second=
+addr=0x00000000F0000019 expected=3 hits1=3 guess=3 hits2=0 second=S
+addr=0x00000000F000001A expected=C hits1=3 guess=C hits2=1 second=p
+addr=0x00000000F000001B expected=r hits1=3 guess=r hits2=1 second=p
+addr=0x00000000F000001C expected=e hits1=3 guess=e hits2=1 second=p
+addr=0x00000000F000001D expected=T hits1=3 guess=T hits2=0 second=e

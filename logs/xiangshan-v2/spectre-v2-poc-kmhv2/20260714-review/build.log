@@ -1,0 +1,16 @@
+make: Entering directory '/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v2-poc-kmhv2/code'
+# Building spectre-v2 [riscv64-xs] with AM_HOME {/nfs/home/leizhenyu/opt/testbench/.local/nexus-am-kmhv2}
+make[1]: Entering directory '/nfs/home/leizhenyu/opt/testbench/.local/nexus-am-kmhv2'
+make[1]: Entering directory '/nfs/home/leizhenyu/opt/testbench/.local/nexus-am-kmhv2/libs/klib'
++ CC src/spectre-v2.c
+# Building lib-klib [riscv64-xs]
+make[1]: Leaving directory '/nfs/home/leizhenyu/opt/testbench/.local/nexus-am-kmhv2/libs/klib'
+make[2]: Entering directory '/nfs/home/leizhenyu/opt/testbench/.local/nexus-am-kmhv2/am'
+# Building lib-am [riscv64-xs]
+make[2]: Leaving directory '/nfs/home/leizhenyu/opt/testbench/.local/nexus-am-kmhv2/am'
+make[1]: Leaving directory '/nfs/home/leizhenyu/opt/testbench/.local/nexus-am-kmhv2'
+# Creating binary image [riscv64-xs]
++ LD -> build/spectre-v2-riscv64-xs.elf
+riscv64-linux-gnu-ld: warning: /nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v2-poc-kmhv2/code/build/spectre-v2-riscv64-xs.elf has a LOAD segment with RWX permissions
++ OBJCOPY -> build/spectre-v2-riscv64-xs.bin
+make: Leaving directory '/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v2-poc-kmhv2/code'

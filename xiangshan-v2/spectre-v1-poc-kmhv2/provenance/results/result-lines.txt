@@ -1,0 +1,6 @@
+m[0x00000000F0000018] = want(S) =?= guess(hits,char) 1.(2, S) 2.(1, 1)
+m[0x00000000F0000019] = want(3) =?= guess(hits,char) 1.(2, 3) 2.(1, p)
+m[0x00000000F000001A] = want(C) =?= guess(hits,char) 1.(2, C) 2.(0, 3)
+m[0x00000000F000001B] = want(r) =?= guess(hits,char) 1.(2, r) 2.(0, C)
+m[0x00000000F000001C] = want(e) =?= guess(hits,char) 1.(2, e) 2.(1, p)
+m[0x00000000F000001D] = want(T) =?= guess(hits,char) 1.(2, T) 2.(1, p)

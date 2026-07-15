@@ -1,0 +1,61 @@
+=== offset=0 build ===
+build_log=/nfs/home/leizhenyu/opt/testbench/logs/spectre-v1-asid-priv-kmhv2-stable-byte0-build.log
+=== offset=0 run ===
+run_log=/nfs/home/leizhenyu/opt/testbench/logs/spectre-v1-asid-priv-kmhv2-stable-byte0-run.log
+[v1-asid-priv] secret_offset=0
+[v1-asid-priv] isolation U-direct-victim-read fault_seen=1 completed=0 value=0x00 u_text=[0000000080002000,0000000080003000) a_data=[0000000080007000,0000000080013000) shared=[0000000080013000,0000000080018000) v_data=[0000000080018000,0000000080020000)
+[v1-asid-priv] satp requested_attacker=0x8001100000080025 requested_victim=0x800170000008006f observed_attacker=0x8001100000080025 observed_victim=0x800170000008006f asid_mask=0xffff00000000000
+[v1-asid-priv] byte 0: expected=S(0x53) guess=S(0x53) score=3 second=0(0x30) score=1
+[v1-asid-priv] byte 0 rounds=3 early_stop=1 min_score=3 gap=2
+[v1-asid-priv] check=PASS
+=== offset=1 build ===
+build_log=/nfs/home/leizhenyu/opt/testbench/logs/spectre-v1-asid-priv-kmhv2-stable-byte1-build.log
+=== offset=1 run ===
+run_log=/nfs/home/leizhenyu/opt/testbench/logs/spectre-v1-asid-priv-kmhv2-stable-byte1-run.log
+[v1-asid-priv] secret_offset=1
+[v1-asid-priv] isolation U-direct-victim-read fault_seen=1 completed=0 value=0x00 u_text=[0000000080002000,0000000080003000) a_data=[0000000080007000,0000000080013000) shared=[0000000080013000,0000000080018000) v_data=[0000000080018000,0000000080020000)
+[v1-asid-priv] satp requested_attacker=0x8001100000080025 requested_victim=0x800170000008006f observed_attacker=0x8001100000080025 observed_victim=0x800170000008006f asid_mask=0xffff00000000000
+[v1-asid-priv] byte 0: expected=3(0x33) guess=3(0x33) score=3 second=0(0x30) score=1
+[v1-asid-priv] byte 0 rounds=4 early_stop=1 min_score=3 gap=2
+[v1-asid-priv] check=PASS
+=== offset=2 build ===
+build_log=/nfs/home/leizhenyu/opt/testbench/logs/spectre-v1-asid-priv-kmhv2-stable-byte2-build.log
+=== offset=2 run ===
+run_log=/nfs/home/leizhenyu/opt/testbench/logs/spectre-v1-asid-priv-kmhv2-stable-byte2-run.log
+[v1-asid-priv] secret_offset=2
+[v1-asid-priv] isolation U-direct-victim-read fault_seen=1 completed=0 value=0x00 u_text=[0000000080002000,0000000080003000) a_data=[0000000080007000,0000000080013000) shared=[0000000080013000,0000000080018000) v_data=[0000000080018000,0000000080020000)
+[v1-asid-priv] satp requested_attacker=0x8001100000080025 requested_victim=0x800170000008006f observed_attacker=0x8001100000080025 observed_victim=0x800170000008006f asid_mask=0xffff00000000000
+[v1-asid-priv] byte 0: expected=C(0x43) guess=C(0x43) score=3 second=0(0x30) score=1
+[v1-asid-priv] byte 0 rounds=3 early_stop=1 min_score=3 gap=2
+[v1-asid-priv] check=PASS
+=== offset=3 build ===
+build_log=/nfs/home/leizhenyu/opt/testbench/logs/spectre-v1-asid-priv-kmhv2-stable-byte3-build.log
+=== offset=3 run ===
+run_log=/nfs/home/leizhenyu/opt/testbench/logs/spectre-v1-asid-priv-kmhv2-stable-byte3-run.log
+[v1-asid-priv] secret_offset=3
+[v1-asid-priv] isolation U-direct-victim-read fault_seen=1 completed=0 value=0x00 u_text=[0000000080002000,0000000080003000) a_data=[0000000080007000,0000000080013000) shared=[0000000080013000,0000000080018000) v_data=[0000000080018000,0000000080020000)
+[v1-asid-priv] satp requested_attacker=0x8001100000080025 requested_victim=0x800170000008006f observed_attacker=0x8001100000080025 observed_victim=0x800170000008006f asid_mask=0xffff00000000000
+[v1-asid-priv] byte 0: expected=r(0x72) guess=r(0x72) score=3 second=0(0x30) score=1
+[v1-asid-priv] byte 0 rounds=4 early_stop=1 min_score=3 gap=2
+[v1-asid-priv] check=PASS
+=== offset=4 build ===
+build_log=/nfs/home/leizhenyu/opt/testbench/logs/spectre-v1-asid-priv-kmhv2-stable-byte4-build.log
+=== offset=4 run ===
+run_log=/nfs/home/leizhenyu/opt/testbench/logs/spectre-v1-asid-priv-kmhv2-stable-byte4-run.log
+[v1-asid-priv] secret_offset=4
+[v1-asid-priv] isolation U-direct-victim-read fault_seen=1 completed=0 value=0x00 u_text=[0000000080002000,0000000080003000) a_data=[0000000080007000,0000000080013000) shared=[0000000080013000,0000000080018000) v_data=[0000000080018000,0000000080020000)
+[v1-asid-priv] satp requested_attacker=0x8001100000080025 requested_victim=0x800170000008006f observed_attacker=0x8001100000080025 observed_victim=0x800170000008006f asid_mask=0xffff00000000000
+[v1-asid-priv] byte 0: expected=e(0x65) guess=e(0x65) score=3 second=0(0x30) score=1
+[v1-asid-priv] byte 0 rounds=3 early_stop=1 min_score=3 gap=2
+[v1-asid-priv] check=PASS
+=== offset=5 build ===
+build_log=/nfs/home/leizhenyu/opt/testbench/logs/spectre-v1-asid-priv-kmhv2-stable-byte5-build.log
+=== offset=5 run ===
+run_log=/nfs/home/leizhenyu/opt/testbench/logs/spectre-v1-asid-priv-kmhv2-stable-byte5-run.log
+[v1-asid-priv] secret_offset=5
+[v1-asid-priv] isolation U-direct-victim-read fault_seen=1 completed=0 value=0x00 u_text=[0000000080002000,0000000080003000) a_data=[0000000080007000,0000000080013000) shared=[0000000080013000,0000000080018000) v_data=[0000000080018000,0000000080020000)
+[v1-asid-priv] satp requested_attacker=0x8001100000080025 requested_victim=0x800170000008006f observed_attacker=0x8001100000080025 observed_victim=0x800170000008006f asid_mask=0xffff00000000000
+[v1-asid-priv] byte 0: expected=T(0x54) guess=T(0x54) score=3 second=0(0x30) score=1
+[v1-asid-priv] byte 0 rounds=3 early_stop=1 min_score=3 gap=2
+[v1-asid-priv] check=PASS
+stable_secret=S3CreT

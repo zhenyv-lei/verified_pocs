@@ -1,0 +1,24 @@
+emu compiled at Jun 29 2026, 18:08:52
+[INFO] init for constantin: loaded from init.
+Using simulated 32768B flash
+Core  0's Commit SHA is: 2acbf327cf, dirty: 0
+Using simulated 8386560MB RAM
+The image is /nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-poc-kmhv2/code/build/spectre-v1-riscv64-xs-flash.elf
+ELF file detected and loading image from extracted elf file
+The first address in the elf does not match the base of the physical memory.
+It is likely that execution leads to unexpected behaviour.
+Loading 10608 bytes at address 0x10000000 at offset 0x0
+Loading 31 bytes at address 0x10002970 at offset 0x2970
+[v1] calibration fallback=70 measured=85 threshold=85 fixed=0
+[v1] reading 6 bytes
+m[0x00000000F0000018] = want(S) =?= guess(hits,char) 1.(2, S) 2.(1, 1)
+m[0x00000000F0000019] = want(3) =?= guess(hits,char) 1.(2, 3) 2.(1, p)
+m[0x00000000F000001A] = want(C) =?= guess(hits,char) 1.(2, C) 2.(0, 3)
+m[0x00000000F000001B] = want(r) =?= guess(hits,char) 1.(2, r) 2.(0, C)
+m[0x00000000F000001C] = want(e) =?= guess(hits,char) 1.(2, e) 2.(1, p)
+m[0x00000000F000001D] = want(T) =?= guess(hits,char) 1.(2, T) 2.(1, p)
+Core 0: [32mHIT GOOD TRAP at pc = 0x0
+[0m[35mCore-0 instrCnt = 487,418, cycleCnt = 825,952, IPC = 0.590129
+[0m[34mSeed=0 Guest cycle spent: 825,982 (this will be different from cycleCnt if emu loads a snapshot)
+[0m[34mHost time spent: 263,083ms
+[0m

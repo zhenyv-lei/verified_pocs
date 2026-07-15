@@ -1,0 +1,6 @@
+offset=0 expected=S guess=S score=2 check=PASS log=/nfs/home/leizhenyu/opt/testbench/logs/spectre-v2-privilege-kmhv2-byte0-tries8-train16-th70-run.log
+offset=1 expected=3 guess=3 score=2 check=PASS log=/nfs/home/leizhenyu/opt/testbench/logs/spectre-v2-privilege-kmhv2-byte1-tries8-train16-th70-run.log
+offset=2 expected=C guess=p score=4 check=FAIL log=/nfs/home/leizhenyu/opt/testbench/logs/spectre-v2-privilege-kmhv2-byte2-tries8-train16-th70-run.log
+offset=3 expected=r guess=r score=2 check=PASS log=/nfs/home/leizhenyu/opt/testbench/logs/spectre-v2-privilege-kmhv2-byte3-tries8-train16-th70-run.log
+offset=4 expected=e guess=e score=2 check=PASS log=/nfs/home/leizhenyu/opt/testbench/logs/spectre-v2-privilege-kmhv2-byte4-tries8-train16-th70-run.log
+offset=5 expected=T guess=T score=2 check=PASS log=/nfs/home/leizhenyu/opt/testbench/logs/spectre-v2-privilege-kmhv2-byte5-tries8-train16-th70-run.log

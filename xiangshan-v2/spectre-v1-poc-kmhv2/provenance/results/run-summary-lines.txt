@@ -1,0 +1,8 @@
+Core  0's Commit SHA is: 2acbf327cf, dirty: 0
+The image is /nfs/home/leizhenyu/opt/testbench/targets/xiangshan/workloads/spectre-v1-kmhv2-run-20260713/build/spectre-v1-riscv64-xs-flash.elf
+[v1] calibration fallback=70 measured=85 threshold=85 fixed=0
+[v1] reading 6 bytes
+Core 0: [32mHIT GOOD TRAP at pc = 0x0
+[0m[35mCore-0 instrCnt = 487,418, cycleCnt = 825,952, IPC = 0.590129
+[0m[34mSeed=0 Guest cycle spent: 825,982 (this will be different from cycleCnt if emu loads a snapshot)
+[0m[34mHost time spent: 268,253ms
