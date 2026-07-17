@@ -1,0 +1,4 @@
+poc=spectre-v1-priv-kmhv2
+run_id=20260717-sv48-fullrun
+start=2026-07-17T12:17:12+08:00
+command=RUN_ID=20260717-sv48-fullrun ./run_verified_pocs.sh spectre-v1-priv-kmhv2

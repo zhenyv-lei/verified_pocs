@@ -1,0 +1,4 @@
+[v1-vmid-priv] model=sv48-vmid-vu-isolation attacker=VU victim=VU service=machine-hypervisor-scheduler attacker_vmid=17 victim_vmid=23 normalized_attacker_vmid=17 normalized_victim_vmid=23 fence_on_switch=0 filter_known_noise=1 secret_sz=6 candidates=62 flush_lines=256 control_only=0
+[v1-vmid-priv] secret_offset=0
+[v1-vmid-priv] calibration fallback=50 measured=85 threshold=50 fixed=1
+[v1-vmid-priv] isolation attacker_direct_victim_secret=ex

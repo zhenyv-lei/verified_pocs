@@ -1,0 +1,42 @@
+Sv48 run summary, 2026-07-17
+
+RUN_ID:
+- 20260717-sv48-runs
+
+Command model:
+- Each target was launched through run_verified_pocs.sh with the existing canonical runner flags.
+- Each launch used an outer 5 minute timeout so every Sv48 target could be exercised and logged.
+- VMID and V2 privilege required escalated execution because AM_HOME rebuild writes to /nfs/home/leizhenyu/opt/testbench/.local/nexus-am-kmhv2/am/build, which is outside the normal workspace-write sandbox.
+
+Results:
+- spectre-v1-priv-kmhv2
+  - exit_code=124
+  - build.log: build completed and emitted spectre-v1-priv-riscv64-xs.elf/bin
+  - run.log: entered emulator and printed model=sv48-pte-u-isolation
+  - no final check= line before timeout
+- spectre-v1-asid-kmhv2
+  - exit_code=124
+  - build.log: build completed and emitted spectre-v1-asid-priv-riscv64-xs.elf/bin
+  - run.log: entered emulator and printed model=sv48-asid-process-isolation
+  - no final check= line before timeout
+- spectre-v1-vmid-kmhv2
+  - exit_code=124
+  - build.log: build completed and emitted spectre-v1-vmid-priv-riscv64-xs.elf/bin
+  - run.log: entered emulator and printed model=sv48-vmid-vu-isolation
+  - no final check= line before timeout
+- spectre-v2-privilege-kmhv2
+  - exit_code=124
+  - build.log: build completed and emitted spectre-v2-privilege-riscv64-xs.elf/bin
+  - run.log: entered emulator and printed model=sv48-pte-u-isolation
+  - no final check= line before timeout
+
+Per-target artifacts:
+- logs/xiangshan-v2/spectre-v1-priv-kmhv2/20260717-sv48-runs/
+- logs/xiangshan-v2/spectre-v1-asid-kmhv2/20260717-sv48-runs/
+- logs/xiangshan-v2/spectre-v1-vmid-kmhv2/20260717-sv48-runs/
+- logs/xiangshan-v2/spectre-v2-privilege-kmhv2/20260717-sv48-runs/
+
+Interpretation:
+- All four Sv48 binaries were built and launched.
+- Runtime PASS is not claimed.
+- The current KMHv2 emulator run reaches Sv48 startup output and then does not reach the attack/check completion path within the 5 minute run window.

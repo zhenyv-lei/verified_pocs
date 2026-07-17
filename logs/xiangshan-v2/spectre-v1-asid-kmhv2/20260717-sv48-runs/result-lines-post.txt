@@ -1,0 +1,4 @@
+[v1-asid-priv] model=sv48-asid-process-isolation attacker=U victim=U service=machine-scheduler attacker_asid=17 victim_asid=23 normalized_attacker_asid=17 normalized_victim_asid=23 fence_on_switch=0 baseline_subtract=0 filter_known_noise=1 secret_sz=6 candidates=62 flush_lines=256 control_only=0
+[v1-asid-priv] secret_offset=0
+[v1-asid-priv] calibration fallback=50 measured=85 threshold=50 fixed=1
+[v1-asid-priv] isolation attacker_direct_victim_secret=expect-fault shared_

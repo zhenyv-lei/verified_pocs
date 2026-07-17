@@ -1,0 +1,13 @@
+emu compiled at Jul 16 2026, 15:50:09
+[INFO] init for constantin: loaded from init.
+Using simulated 32768B flash
+Core  0's Commit SHA is: 2acbf327cf, dirty: 0
+Using simulated 8386560MB RAM
+The image is /nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-asid-kmhv2/code/build/spectre-v1-asid-priv-riscv64-xs.elf
+ELF file detected and loading image from extracted elf file
+Loading 27240 bytes at address 0x80000000 at offset 0x0
+Loading 794624 bytes at address 0x80007000 at offset 0x7000
+[v1-asid-priv] model=sv48-asid-process-isolation attacker=U victim=U service=machine-scheduler attacker_asid=17 victim_asid=23 normalized_attacker_asid=17 normalized_victim_asid=23 fence_on_switch=0 baseline_subtract=0 filter_known_noise=1 secret_sz=6 candidates=62 flush_lines=256 control_only=0
+[v1-asid-priv] secret_offset=0
+[v1-asid-priv] calibration fallback=50 measured=85 threshold=50 fixed=1
+[v1-asid-priv] isolation attacker_direct_victim_secret=expect-fault shared_
