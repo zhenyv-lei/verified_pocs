@@ -63,13 +63,10 @@ run_v1_asid_kmhv2() {
   local code="$BASE/xiangshan-v2/$name/code"
   local out="$BASE/logs/xiangshan-v2/$name/$RUN_ID"
   mkdir -p "$out"
-  for offset in 0 1 2 3 4 5; do
-    make_clean "$code" riscv64-xs "$AM_HOME_V2"
-    make -C "$code" AM_HOME="$AM_HOME_V2" ARCH=riscv64-xs LINUX_GNU_TOOLCHAIN=1 MARCH="$MARCH_GC" CC_OPT= CPPFLAGS="-DSECRET_SZ=1 -DSECRET_OFFSET=${offset} -DATTACK_SAME_ROUNDS=5 -DTRAIN_TIMES=10 -DUSE_FIXED_CACHE_HIT_THRESHOLD=1 -DCACHE_HIT_THRESHOLD=50 -DFILTER_KNOWN_NOISE=1 -DFULL_BYTE_PROBE=0 -DPROBE_CANDIDATES=62 -DEARLY_STOP=1 -DEARLY_STOP_MIN_SCORE=3 -DEARLY_STOP_GAP=2 -DATTACKER_ASID=17 -DVICTIM_ASID=23 -DFENCE_ON_ASID_SWITCH=0" -j8 > "$out/byte${offset}-build.log" 2>&1
-    cp "$code/build/spectre-v1-asid-priv-riscv64-xs.elf" "$code/build/spectre-v1-asid-priv-riscv64-xs-byte${offset}.elf"
-    timeout 20m "$EMU_V2" --no-diff -i "$code/build/spectre-v1-asid-priv-riscv64-xs-byte${offset}.elf" > "$out/byte${offset}-run.log" 2>&1
-    extract_common "$out/byte${offset}-run.log" "$out/byte${offset}-result-lines.txt"
-  done
+  make_clean "$code" riscv64-xs "$AM_HOME_V2"
+  make -C "$code" AM_HOME="$AM_HOME_V2" ARCH=riscv64-xs LINUX_GNU_TOOLCHAIN=1 MARCH="$MARCH_GC" CC_OPT= CPPFLAGS="-DSECRET_SZ=6 -DSECRET_OFFSET=0 -DATTACK_SAME_ROUNDS=5 -DTRAIN_TIMES=10 -DUSE_FIXED_CACHE_HIT_THRESHOLD=1 -DCACHE_HIT_THRESHOLD=50 -DFILTER_KNOWN_NOISE=1 -DFULL_BYTE_PROBE=0 -DPROBE_CANDIDATES=62 -DEARLY_STOP=1 -DEARLY_STOP_MIN_SCORE=3 -DEARLY_STOP_GAP=2 -DATTACKER_ASID=17 -DVICTIM_ASID=23 -DFENCE_ON_ASID_SWITCH=0" -j8 > "$out/build.log" 2>&1
+  timeout 30m "$EMU_V2" --no-diff -i "$code/build/spectre-v1-asid-priv-riscv64-xs.elf" > "$out/run.log" 2>&1
+  extract_common "$out/run.log" "$out/result-lines.txt"
 }
 
 run_v1_vmid_kmhv2() {
@@ -77,13 +74,10 @@ run_v1_vmid_kmhv2() {
   local code="$BASE/xiangshan-v2/$name/code"
   local out="$BASE/logs/xiangshan-v2/$name/$RUN_ID"
   mkdir -p "$out"
-  for offset in 0 1 2 3 4 5; do
-    make_clean "$code" riscv64-xs "$AM_HOME_V2"
-    make -C "$code" AM_HOME="$AM_HOME_V2" ARCH=riscv64-xs LINUX_GNU_TOOLCHAIN=1 MARCH="$MARCH_GCH" CC_OPT= CPPFLAGS="-DSECRET_SZ=1 -DSECRET_OFFSET=${offset} -DATTACK_SAME_ROUNDS=5 -DTRAIN_TIMES=10 -DUSE_FIXED_CACHE_HIT_THRESHOLD=1 -DCACHE_HIT_THRESHOLD=50 -DFILTER_KNOWN_NOISE=1 -DFULL_BYTE_PROBE=0 -DPROBE_CANDIDATES=62 -DEARLY_STOP=1 -DEARLY_STOP_MIN_SCORE=3 -DEARLY_STOP_GAP=2 -DATTACKER_VMID=17 -DVICTIM_VMID=23 -DFENCE_ON_VMID_SWITCH=0" -j8 > "$out/byte${offset}-build.log" 2>&1
-    cp "$code/build/spectre-v1-vmid-priv-riscv64-xs.elf" "$code/build/spectre-v1-vmid-priv-riscv64-xs-byte${offset}.elf"
-    timeout 20m "$EMU_V2" --no-diff -i "$code/build/spectre-v1-vmid-priv-riscv64-xs-byte${offset}.elf" > "$out/byte${offset}-run.log" 2>&1
-    extract_common "$out/byte${offset}-run.log" "$out/byte${offset}-result-lines.txt"
-  done
+  make_clean "$code" riscv64-xs "$AM_HOME_V2"
+  make -C "$code" AM_HOME="$AM_HOME_V2" ARCH=riscv64-xs LINUX_GNU_TOOLCHAIN=1 MARCH="$MARCH_GCH" CC_OPT= CPPFLAGS="-DSECRET_SZ=6 -DSECRET_OFFSET=0 -DATTACK_SAME_ROUNDS=5 -DTRAIN_TIMES=10 -DUSE_FIXED_CACHE_HIT_THRESHOLD=1 -DCACHE_HIT_THRESHOLD=50 -DFILTER_KNOWN_NOISE=1 -DFULL_BYTE_PROBE=0 -DPROBE_CANDIDATES=62 -DEARLY_STOP=1 -DEARLY_STOP_MIN_SCORE=3 -DEARLY_STOP_GAP=2 -DATTACKER_VMID=17 -DVICTIM_VMID=23 -DFENCE_ON_VMID_SWITCH=0" -j8 > "$out/build.log" 2>&1
+  timeout 30m "$EMU_V2" --no-diff -i "$code/build/spectre-v1-vmid-priv-riscv64-xs.elf" > "$out/run.log" 2>&1
+  extract_common "$out/run.log" "$out/result-lines.txt"
 }
 
 run_v2_privilege_kmhv2() {
@@ -91,13 +85,10 @@ run_v2_privilege_kmhv2() {
   local code="$BASE/xiangshan-v2/$name/code"
   local out="$BASE/logs/xiangshan-v2/$name/$RUN_ID"
   mkdir -p "$out"
-  for offset in 0 1 2 3 4 5; do
-    make_clean "$code" riscv64-xs "$AM_HOME_V2"
-    make -C "$code" AM_HOME="$AM_HOME_V2" ARCH=riscv64-xs LINUX_GNU_TOOLCHAIN=1 MARCH="$MARCH_GC" CC_OPT= CPPFLAGS="-DCACHE_HIT_THRESHOLD=70 -DUSE_FIXED_CACHE_HIT_THRESHOLD=1 -DSECRET_SZ=1 -DSECRET_OFFSET=${offset} -DV2_ATTACK_TRIES=8 -DV2_TRAINING_LOOPS=16 -DPROBE_CANDIDATES=62 -DFULL_BYTE_PROBE=0 -DEARLY_STOP=1 -DEARLY_STOP_MIN_SCORE=2 -DEARLY_STOP_GAP=1 -DV2_EARLY_STOP_STRICT=0 -DV2_PROBE_MIX=1 -DSTRICT_PAGE_TABLE_DEMO=1 -DATTACKER_MPP=0 -DDIRECT_SERVICE_CALL=0 -DUSE_AM_CTE=0 -DV2_ASM_ROUND=1 -DV2_FIXED_MARKER=-1 -DV2_BYTE_WARMUP_ROUNDS=0 -DV2_ASM_CONTROL_ROUND=0 -DV2_PROBE_CONTROL_ROUND=0 -DV2_ASM_STYLE=0" -j8 > "$out/byte${offset}-build.log" 2>&1
-    cp "$code/build/spectre-v2-privilege-riscv64-xs.elf" "$code/build/spectre-v2-privilege-riscv64-xs-byte${offset}-baseline.elf"
-    timeout 10m "$EMU_V2" --no-diff -i "$code/build/spectre-v2-privilege-riscv64-xs-byte${offset}-baseline.elf" > "$out/byte${offset}-run.log" 2>&1
-    extract_common "$out/byte${offset}-run.log" "$out/byte${offset}-result-lines.txt"
-  done
+  make_clean "$code" riscv64-xs "$AM_HOME_V2"
+  make -C "$code" AM_HOME="$AM_HOME_V2" ARCH=riscv64-xs LINUX_GNU_TOOLCHAIN=1 MARCH="$MARCH_GC" CC_OPT= CPPFLAGS="-DCACHE_HIT_THRESHOLD=60 -DUSE_FIXED_CACHE_HIT_THRESHOLD=1 -DSECRET_SZ=6 -DSECRET_OFFSET=0 -DV2_ATTACK_TRIES=8 -DV2_TRAINING_LOOPS=16 -DPROBE_CANDIDATES=62 -DFULL_BYTE_PROBE=0 -DEARLY_STOP=1 -DEARLY_STOP_MIN_SCORE=2 -DEARLY_STOP_GAP=1 -DV2_EARLY_STOP_STRICT=0 -DV2_PROBE_MIX=1 -DSTRICT_PAGE_TABLE_DEMO=1 -DATTACKER_MPP=0 -DDIRECT_SERVICE_CALL=0 -DUSE_AM_CTE=0 -DV2_ASM_ROUND=1 -DV2_FIXED_MARKER=-1 -DV2_BYTE_WARMUP_ROUNDS=0 -DV2_EXTRA_CHANNEL_FLUSHES=0 -DV2_ASM_CONTROL_ROUND=0 -DV2_PROBE_CONTROL_ROUND=0 -DV2_ASM_STYLE=0" -j8 > "$out/build.log" 2>&1
+  timeout 20m "$EMU_V2" --no-diff -i "$code/build/spectre-v2-privilege-riscv64-xs.elf" > "$out/run.log" 2>&1
+  extract_common "$out/run.log" "$out/result-lines.txt"
 }
 
 run_v1_kmhv3() {

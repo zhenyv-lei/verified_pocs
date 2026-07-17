@@ -1,0 +1,21 @@
+[v1-asid-priv] model=sv39-asid-process-isolation attacker=U victim=U service=machine-scheduler attacker_asid=17 victim_asid=23 normalized_attacker_asid=17 normalized_victim_asid=23 fence_on_switch=0 baseline_subtract=0 filter_known_noise=1 secret_sz=6 candidates=62 flush_lines=256 control_only=0
+[v1-asid-priv] secret_offset=0
+[v1-asid-priv] calibration fallback=50 measured=85 threshold=50 fixed=1
+[v1-asid-priv] isolation attacker_direct_victim_secret=expect-fault shared_probe=mapped-both victim_data=mapped-victim-only
+[v1-asid-priv] victim_array1=0000000080018000 victim_secret=0000000080018050 malicious_base=80 probe=0000000080013000
+[v1-asid-priv] isolation U-direct-victim-read fault_seen=1 completed=0 value=0x00 u_text=[0000000080002000,0000000080003000) a_data=[0000000080007000,0000000080013000) shared=[0000000080013000,0000000080018000) v_data=[0000000080018000,0000000080020000)
+[v1-asid-priv] satp requested_attacker=0x8001100000080025 requested_victim=0x800170000008006f observed_attacker=0x8001100000080025 observed_victim=0x800170000008006f asid_mask=0xffff00000000000
+[v1-asid-priv] traps=439 victim_calls=209 victim_done=209 flush_calls=19 exit_calls=1 bad_traps=0 last_mcause=8 last_mepc=0000000080002480 status=0
+[v1-asid-priv] byte 0: expected=S(0x53) guess=S(0x53) score=4 second=p(0x70) score=2
+[v1-asid-priv] byte 0 rounds=4 early_stop=1 min_score=3 gap=2
+[v1-asid-priv] byte 1: expected=3(0x33) guess=3(0x33) score=3 second=?(0x00) score=0
+[v1-asid-priv] byte 1 rounds=3 early_stop=1 min_score=3 gap=2
+[v1-asid-priv] byte 2: expected=C(0x43) guess=C(0x43) score=3 second=?(0x00) score=0
+[v1-asid-priv] byte 2 rounds=3 early_stop=1 min_score=3 gap=2
+[v1-asid-priv] byte 3: expected=r(0x72) guess=r(0x72) score=3 second=p(0x70) score=1
+[v1-asid-priv] byte 3 rounds=3 early_stop=1 min_score=3 gap=2
+[v1-asid-priv] byte 4: expected=e(0x65) guess=e(0x65) score=3 second=?(0x00) score=0
+[v1-asid-priv] byte 4 rounds=3 early_stop=1 min_score=3 gap=2
+[v1-asid-priv] byte 5: expected=T(0x54) guess=T(0x54) score=3 second=?(0x00) score=0
+[v1-asid-priv] byte 5 rounds=3 early_stop=1 min_score=3 gap=2
+[v1-asid-priv] check=PASS

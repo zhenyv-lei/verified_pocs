@@ -1,0 +1,26 @@
+emu compiled at Jun 29 2026, 18:08:52
+[INFO] init for constantin: loaded from init.
+Using simulated 32768B flash
+Core  0's Commit SHA is: 2acbf327cf, dirty: 0
+Using simulated 8386560MB RAM
+The image is /nfs/home/leizhenyu/opt/testbench/.publish_verified_pocs_20260715_100956/xiangshan-v2/spectre-v2-privilege-kmhv2/code/build/spectre-v2-privilege-riscv64-xs.elf
+ELF file detected and loading image from extracted elf file
+Loading 28888 bytes at address 0x80000000 at offset 0x0
+Loading 245776 bytes at address 0x80008000 at offset 0x8000
+[v2-privilege] model=sv39-pte-u-isolation attacker=U victim=M isolation=Sv39-PTE-U0 secret=PTE_U0 pmp=permissive-not-boundary satp=sv39 service=machine-ecall round=asm-single-site fixed_marker=-1 secret_offset=0 secret_sz=6 candidates=62 tries=8 train=16 warmup=0 extra_flush=0 asm_control=0 probe_control=1 probe_mix=1 early_strict=0 asm_style=0
+[v2-privilege] calibration fallback=60 measured=93 threshold=60 fixed=1
+[v2-privilege] control service_return=no-secret direct_secret_access=expect-fault
+[v2-privilege] secret=0000000080008000 channel=0000000080009000 gadget=0000000080000B6C safe_target=0000000080000BCE
+[v2-privilege] isolation U-direct-secret-read fault_seen=1 completed=0 value=0x00 expected=fault u_text=[0000000080002000,0000000080003000) m_secret=0000000080008000
+[v2-privilege] traps=74 train_calls=0 attack_calls=0 asm_round_calls=36 flush_calls=36 exit_calls=1 bad_traps=0 last_mcause=8 last_mepc=0000000080002460 status=0
+[v2-privilege] byte 0: expected=S(0x53) expected_score=2 guess=S(0x53) score=2 second=M(0x4d) score=1
+[v2-privilege] byte 0 tries=2 early_stop=1 min_score=2 gap=1
+[v2-privilege] byte 0 top4=S(0x53):2,M(0x4d):1,X(0x58):1,?(0x00):0
+[v2-privilege] byte 1: expected=3(0x33) expected_score=2 guess=3(0x33) score=2 second=?(0x00) score=0
+[v2-privilege] byte 1 tries=2 early_stop=1 min_score=2 gap=1
+[v2-privilege] byte 1 top4=3(0x33):2,?(0x00):0,?(0x00):0,?(0x00):0
+[v2-privilege] byte 2: expected=C(0x43) expected_score=1 guess=1(0x31) score=1 second=2(0x32) score=1
+[v2-privilege] byte 2 tries=8 early_stop=1 min_score=2 gap=1
+[v2-privilege] byte 2 top4=1(0x31):1,2(0x32):1,3(0x33):1,4(0x34):1
+[v2-privilege] byte 3: expected=r(0x72) expected_score=0 guess=?(0x00) score=0 second=?(0x00) score=0
+[v2-privilege] byte 3 tries=8 early_stop

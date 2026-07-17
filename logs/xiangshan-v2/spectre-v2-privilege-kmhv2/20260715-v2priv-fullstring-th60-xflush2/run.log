@@ -1,0 +1,13 @@
+emu compiled at Jun 29 2026, 18:08:52
+[INFO] init for constantin: loaded from init.
+Using simulated 32768B flash
+Core  0's Commit SHA is: 2acbf327cf, dirty: 0
+Using simulated 8386560MB RAM
+The image is /nfs/home/leizhenyu/opt/testbench/.publish_verified_pocs_20260715_100956/xiangshan-v2/spectre-v2-privilege-kmhv2/code/build/spectre-v2-privilege-riscv64-xs.elf
+ELF file detected and loading image from extracted elf file
+Loading 29200 bytes at address 0x80000000 at offset 0x0
+Loading 245776 bytes at address 0x80008000 at offset 0x8000
+[v2-privilege] model=sv39-pte-u-isolation attacker=U victim=M isolation=Sv39-PTE-U0 secret=PTE_U0 pmp=permissive-not-boundary satp=sv39 service=machine-ecall round=asm-single-site fixed_marker=-1 secret_offset=0 secret_sz=6 candidates=62 tries=8 train=16 warmup=0 extra_flush=2 asm_control=0 probe_control=0 probe_mix=1 early_strict=0 asm_style=0
+[v2-privilege] calibration fallback=60 measured=94 threshold=60 fixed=1
+[v2-privilege] control service_return=no-secret direct_secret_access=expect-fault
+[v2-privilege] secret=0000000080008000 channel=0000000080009000 gadget=0000000080000B6C safe_target=0000000080000BCE

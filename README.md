@@ -27,9 +27,9 @@ The repository is intentionally organized around processor generation first, the
 | xiangshan-v2 | `spectre-v1-poc-kmhv2` | PASS | top-1 `S3CreT` |
 | xiangshan-v2 | `spectre-v2-poc-kmhv2` | PASS | top-1 `S3CreT` |
 | xiangshan-v2 | `spectre-v1-priv-kmhv2` | PASS | top-1 `S3CreT`; direct U read faulted |
-| xiangshan-v2 | `spectre-v1-asid-kmhv2` | PASS | per-byte `S3CreT`; ASID isolation checked |
-| xiangshan-v2 | `spectre-v1-vmid-kmhv2` | PASS | per-byte `S3CreT`; VMID isolation checked |
-| xiangshan-v2 | `spectre-v2-privilege-kmhv2` | MIXED | historical baseline `S3preT` 5/6; rerun top-1 `S3Creq`; do not report as clean full recovery |
+| xiangshan-v2 | `spectre-v1-asid-kmhv2` | PASS | full-string `S3CreT`; ASID isolation checked |
+| xiangshan-v2 | `spectre-v1-vmid-kmhv2` | PASS | full-string `S3CreT`; VMID isolation checked |
+| xiangshan-v2 | `spectre-v2-privilege-kmhv2` | FAIL / RECORDED | full-string top-1 `S3p111` vs expected `S3CreT`, `check=FAIL`; retained as canonical noisy result |
 | xiangshan-v3 | `spectre-v1-poc-kmhv3` | PASS | top-1 `S3CreT` |
 
 Use `POC_REGISTRY.tsv` for exact code path, emulator path, architecture, and historical result metadata.
@@ -71,4 +71,6 @@ Keep this repository compact:
 4. Historical artifact evidence belongs under each PoC's `provenance/`.
 5. Do not merge exploratory/control results into baseline conclusions.
 
-In particular, `spectre-v2-privilege-kmhv2` must be described carefully: the historical corrected baseline was `S3preT` vs expected `S3CreT` (`5/6` top-1), and the latest rerun was also not a clean top-1 full-string recovery.
+The canonical `spectre-v1-asid-kmhv2`, `spectre-v1-vmid-kmhv2`, and `spectre-v2-privilege-kmhv2` runner targets use continuous full-string mode with `SECRET_SZ=6` and `SECRET_OFFSET=0`.
+
+In particular, `spectre-v2-privilege-kmhv2` must be described carefully: the retained canonical full-string run uses a stricter fixed threshold (`CACHE_HIT_THRESHOLD=60`) and recovered top-1 `S3p111` vs expected `S3CreT` with `check=FAIL`. This is useful as a noisy/partial leakage record, but it must not be reported as clean full-string recovery. Two cleanup-oriented controls were also attempted: `V2_EXTRA_CHANNEL_FLUSHES=2` and `V2_PROBE_CONTROL_ROUND=1`; both exceeded the 20-minute run timeout in this environment.
