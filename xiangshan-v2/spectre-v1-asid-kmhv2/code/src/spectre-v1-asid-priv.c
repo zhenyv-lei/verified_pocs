@@ -3,8 +3,8 @@
 #include <stdint.h>
 #include <xsextra.h>
 
-#include "../../spectre-v1/src/encoding.h"
-#include "../../spectre-v1/src/cache-utils.h"
+#include "../../../spectre-v1-poc-kmhv2/code/src/encoding.h"
+#include "../../../spectre-v1-poc-kmhv2/code/src/cache-utils.h"
 
 #ifndef TRAIN_TIMES
 #define TRAIN_TIMES 10
@@ -109,7 +109,7 @@ _Static_assert(PROBE_STRIDE == 64, "victim_process_gadget assumes 64-byte probe 
 #define PAGE_SHIFT 12u
 #define PAGE_SIZE (1ull << PAGE_SHIFT)
 #define PTES_PER_PT 512u
-#define SATP_MODE_SV39 (8ull << 60)
+#define SATP_MODE_SV48 (9ull << 60)
 #define SATP_ASID_SHIFT 44u
 #define SATP_ASID_MASK (0xffffull << SATP_ASID_SHIFT)
 #define VPTE_V (1ull << 0)
@@ -227,8 +227,10 @@ static volatile uintptr_t resume_attacker_epc;
 
 struct page_space {
   uint64_t root[PTES_PER_PT] __attribute__((aligned(PAGE_SIZE)));
+  uint64_t l2[8][PTES_PER_PT] __attribute__((aligned(PAGE_SIZE)));
   uint64_t l1[8][PTES_PER_PT] __attribute__((aligned(PAGE_SIZE)));
   uint64_t l0[64][PTES_PER_PT] __attribute__((aligned(PAGE_SIZE)));
+  uint64_t l2_used;
   uint64_t l1_used;
   uint64_t l0_used;
   uint64_t asid;
@@ -264,6 +266,14 @@ static void zero_page(void *page)
     p[i] = 0;
 }
 
+static int alloc_l2(struct page_space *space)
+{
+  if (space->l2_used >= 8)
+    return -1;
+  zero_page(space->l2[space->l2_used]);
+  return (int)space->l2_used++;
+}
+
 static int alloc_l1(struct page_space *space)
 {
   if (space->l1_used >= 8)
@@ -282,23 +292,36 @@ static int alloc_l0(struct page_space *space)
 
 static uint64_t *walk_page(struct page_space *space, uintptr_t va, int alloc)
 {
+  uintptr_t vpn3 = (va >> 39) & 0x1ffu;
   uintptr_t vpn2 = (va >> 30) & 0x1ffu;
   uintptr_t vpn1 = (va >> 21) & 0x1ffu;
   uintptr_t vpn0 = (va >> 12) & 0x1ffu;
+  uint64_t *l2;
   uint64_t *l1;
   uint64_t *l0;
   int idx;
 
-  if ((space->root[vpn2] & VPTE_V) == 0) {
+  if ((space->root[vpn3] & VPTE_V) == 0) {
+    if (!alloc)
+      return NULL;
+    idx = alloc_l2(space);
+    if (idx < 0)
+      return NULL;
+    space->root[vpn3] =
+        (((uintptr_t)space->l2[idx] >> PAGE_SHIFT) << 10) | VPTE_V;
+  }
+  l2 = (uint64_t *)(((space->root[vpn3] >> 10) << PAGE_SHIFT));
+
+  if ((l2[vpn2] & VPTE_V) == 0) {
     if (!alloc)
       return NULL;
     idx = alloc_l1(space);
     if (idx < 0)
       return NULL;
-    space->root[vpn2] =
+    l2[vpn2] =
         (((uintptr_t)space->l1[idx] >> PAGE_SHIFT) << 10) | VPTE_V;
   }
-  l1 = (uint64_t *)(((space->root[vpn2] >> 10) << PAGE_SHIFT));
+  l1 = (uint64_t *)(((l2[vpn2] >> 10) << PAGE_SHIFT));
 
   if ((l1[vpn1] & VPTE_V) == 0) {
     if (!alloc)
@@ -337,10 +360,11 @@ static int map_identity_range(struct page_space *space, uintptr_t start,
 static void init_page_space(struct page_space *space, uint64_t asid)
 {
   zero_page(space->root);
+  space->l2_used = 0;
   space->l1_used = 0;
   space->l0_used = 0;
   space->asid = ASID16(asid);
-  space->satp = SATP_MODE_SV39 |
+  space->satp = SATP_MODE_SV48 |
                 (space->asid << SATP_ASID_SHIFT) |
                 (((uintptr_t)space->root) >> PAGE_SHIFT);
 }
@@ -901,7 +925,7 @@ int main(void)
     active_threshold = CACHE_HIT_THRESHOLD;
 #endif
 
-  printf("[v1-asid-priv] model=sv39-asid-process-isolation attacker=U victim=U service=machine-scheduler attacker_asid=%lu victim_asid=%lu normalized_attacker_asid=%lu normalized_victim_asid=%lu fence_on_switch=%d baseline_subtract=%d filter_known_noise=%d secret_sz=%d candidates=%d flush_lines=%d control_only=%d\n",
+  printf("[v1-asid-priv] model=sv48-asid-process-isolation attacker=U victim=U service=machine-scheduler attacker_asid=%lu victim_asid=%lu normalized_attacker_asid=%lu normalized_victim_asid=%lu fence_on_switch=%d baseline_subtract=%d filter_known_noise=%d secret_sz=%d candidates=%d flush_lines=%d control_only=%d\n",
          (uint64_t)ATTACKER_ASID, (uint64_t)VICTIM_ASID,
          (uint64_t)ASID16(ATTACKER_ASID), (uint64_t)ASID16(VICTIM_ASID),
          FENCE_ON_ASID_SWITCH, USE_BASELINE_SUBTRACT, FILTER_KNOWN_NOISE,

@@ -1,0 +1,10 @@
+emu compiled at Jul 16 2026, 15:50:09
+[INFO] init for constantin: loaded from init.
+Using simulated 32768B flash
+Core  0's Commit SHA is: 2acbf327cf, dirty: 0
+Using simulated 8386560MB RAM
+The image is /nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-vmid-kmhv2/code/build/spectre-v1-vmid-priv-riscv64-xs.elf
+ELF file detected and loading image from extracted elf file
+Loading 27368 bytes at address 0x80000000 at offset 0x0
+Loading 794624 bytes at address 0x80007000 at offset 0x7000
+[v1-vmid-priv] model=sv48-vmid-vu-isolation attacker=VU victim=VU service=machine-hypervisor-scheduler att

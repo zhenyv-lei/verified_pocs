@@ -104,7 +104,7 @@ _Static_assert(PROBE_STRIDE == 64, "victim_service assumes 64-byte probe stride"
 #define PAGE_SHIFT 12u
 #define PAGE_SIZE (1ull << PAGE_SHIFT)
 #define PTES_PER_PT 512u
-#define SATP_MODE_SV39 (8ull << 60)
+#define SATP_MODE_SV48 (9ull << 60)
 #define VPTE_V (1ull << 0)
 #define VPTE_R (1ull << 1)
 #define VPTE_W (1ull << 2)
@@ -127,15 +127,15 @@ asm(
     ".previous\n");
 
 #if STRICT_PAGE_TABLE_DEMO && ATTACKER_MPP != 0
-#error "Sv39 PTE.U isolation demo requires ATTACKER_MPP=0"
+#error "Sv48 PTE.U isolation demo requires ATTACKER_MPP=0"
 #endif
 
 #if STRICT_PAGE_TABLE_DEMO && DIRECT_SERVICE_CALL
-#error "Sv39 PTE.U isolation demo requires real machine ecall path"
+#error "Sv48 PTE.U isolation demo requires real machine ecall path"
 #endif
 
 #if STRICT_PAGE_TABLE_DEMO && USE_AM_CTE
-#error "Sv39 PTE.U isolation demo uses machine ecall path, not AM CTE"
+#error "Sv48 PTE.U isolation demo uses machine ecall path, not AM CTE"
 #endif
 
 struct victim_region {
@@ -175,8 +175,10 @@ static volatile uint64_t U_DATA direct_secret_read_completed;
 static volatile uint64_t U_DATA direct_secret_read_value;
 
 static uint64_t root_pt[PTES_PER_PT] __attribute__((aligned(PAGE_SIZE)));
+static uint64_t l2_pts[4][PTES_PER_PT] __attribute__((aligned(PAGE_SIZE)));
 static uint64_t l1_pts[4][PTES_PER_PT] __attribute__((aligned(PAGE_SIZE)));
 static uint64_t l0_pts[32][PTES_PER_PT] __attribute__((aligned(PAGE_SIZE)));
+static uint64_t l2_used;
 static uint64_t l1_used;
 static uint64_t l0_used;
 
@@ -200,6 +202,14 @@ static void zero_page(void *page)
     p[i] = 0;
 }
 
+static int alloc_l2(void)
+{
+  if (l2_used >= 4)
+    return -1;
+  zero_page(l2_pts[l2_used]);
+  return (int)l2_used++;
+}
+
 static int alloc_l1(void)
 {
   if (l1_used >= 4)
@@ -218,22 +228,34 @@ static int alloc_l0(void)
 
 static uint64_t *walk_page(uintptr_t va, int alloc)
 {
+  uintptr_t vpn3 = (va >> 39) & 0x1ffu;
   uintptr_t vpn2 = (va >> 30) & 0x1ffu;
   uintptr_t vpn1 = (va >> 21) & 0x1ffu;
   uintptr_t vpn0 = (va >> 12) & 0x1ffu;
+  uint64_t *l2;
   uint64_t *l1;
   uint64_t *l0;
   int idx;
 
-  if ((root_pt[vpn2] & VPTE_V) == 0) {
+  if ((root_pt[vpn3] & VPTE_V) == 0) {
+    if (!alloc)
+      return NULL;
+    idx = alloc_l2();
+    if (idx < 0)
+      return NULL;
+    root_pt[vpn3] = (((uintptr_t)l2_pts[idx] >> PAGE_SHIFT) << 10) | VPTE_V;
+  }
+  l2 = (uint64_t *)(((root_pt[vpn3] >> 10) << PAGE_SHIFT));
+
+  if ((l2[vpn2] & VPTE_V) == 0) {
     if (!alloc)
       return NULL;
     idx = alloc_l1();
     if (idx < 0)
       return NULL;
-    root_pt[vpn2] = (((uintptr_t)l1_pts[idx] >> PAGE_SHIFT) << 10) | VPTE_V;
+    l2[vpn2] = (((uintptr_t)l1_pts[idx] >> PAGE_SHIFT) << 10) | VPTE_V;
   }
-  l1 = (uint64_t *)(((root_pt[vpn2] >> 10) << PAGE_SHIFT));
+  l1 = (uint64_t *)(((l2[vpn2] >> 10) << PAGE_SHIFT));
 
   if ((l1[vpn1] & VPTE_V) == 0) {
     if (!alloc)
@@ -271,6 +293,7 @@ static int map_identity_range(uintptr_t start, uintptr_t end, uint64_t perm)
 static void install_priv_page_table(void)
 {
   zero_page(root_pt);
+  l2_used = 0;
   l1_used = 0;
   l0_used = 0;
 
@@ -301,7 +324,7 @@ static void install_priv_page_table(void)
                          VPTE_R | VPTE_W) != 0)
     panic("map m_secret failed");
 
-  uintptr_t satp = SATP_MODE_SV39 | (((uintptr_t)root_pt) >> PAGE_SHIFT);
+  uintptr_t satp = SATP_MODE_SV48 | (((uintptr_t)root_pt) >> PAGE_SHIFT);
   asm volatile("csrw satp, %0\nsfence.vma zero, zero\nfence.i" :: "r"(satp) : "memory");
 }
 
@@ -750,10 +773,10 @@ int main(void)
 #endif
 
   printf("[v1-priv] model=%s attacker=%s victim=M isolation=%s secret=PTE_U0 pmp=permissive-not-boundary satp=%s service=%s secret_sz=%d candidates=%d flush_lines=%d control_only=%d\n",
-         PAGE_TABLE_ATTACKER ? "sv39-pte-u-isolation" : "interface",
+         PAGE_TABLE_ATTACKER ? "sv48-pte-u-isolation" : "interface",
          ATTACKER_MPP == 0 ? "U" : "S",
-         PAGE_TABLE_ATTACKER ? "Sv39-PTE-U0" : "none",
-         PAGE_TABLE_ATTACKER ? "sv39" : "off",
+         PAGE_TABLE_ATTACKER ? "Sv48-PTE-U0" : "none",
+         PAGE_TABLE_ATTACKER ? "sv48" : "off",
          DIRECT_SERVICE_CALL ? "direct-dispatch" : (USE_AM_CTE ? "am-cte-ecall" : "machine-ecall"),
          SECRET_SZ, PROBE_CANDIDATES, FLUSH_LINES, CONTROL_ONLY);
   printf("[v1-priv] calibration fallback=%d measured=%lu threshold=%lu fixed=%d\n",

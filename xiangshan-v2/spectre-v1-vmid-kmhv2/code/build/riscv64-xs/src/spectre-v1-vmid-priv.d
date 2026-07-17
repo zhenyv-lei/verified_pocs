@@ -8,5 +8,5 @@
  /nfs/home/leizhenyu/opt/testbench/.local/nexus-am-kmhv2/libs/klib/include/printf.h \
  /nfs/home/leizhenyu/opt/testbench/.local/nexus-am-kmhv2/am/xsextra.h \
  /nfs/home/leizhenyu/opt/testbench/.local/nexus-am-kmhv2/libs/klib/include/klib-macros.h \
- /nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-vmid-kmhv2/code/src/../../spectre-v1/src/encoding.h \
- /nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-vmid-kmhv2/code/src/../../spectre-v1/src/cache-utils.h
+ /nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-vmid-kmhv2/code/src/../../../spectre-v1-poc-kmhv2/code/src/encoding.h \
+ /nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-vmid-kmhv2/code/src/../../../spectre-v1-poc-kmhv2/code/src/cache-utils.h

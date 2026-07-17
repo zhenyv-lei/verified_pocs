@@ -1,0 +1,1 @@
+[v2-privilege] model=sv48-pte-u-isolation attacker=U victim=M isolation=Sv48-PTE-U0 secr

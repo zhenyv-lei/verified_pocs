@@ -1,0 +1,38 @@
+Sv48 conversion summary, 2026-07-17
+
+Scope:
+- xiangshan-v2/spectre-v1-priv-kmhv2
+- xiangshan-v2/spectre-v1-asid-kmhv2
+- xiangshan-v2/spectre-v1-vmid-kmhv2
+- xiangshan-v2/spectre-v2-privilege-kmhv2
+
+Source conversion:
+- Replaced active Sv39 MODE=8 page-table setup with Sv48 MODE=9.
+- Added VPN[3] extraction and four-level root(L3) -> L2 -> L1 -> L0 walks.
+- Kept 4 KiB L0 leaves and existing PTE permissions.
+- Kept ASID in satp[59:44].
+- Kept VMID PoC hgatp in Bare mode with VMID only; only first-stage vsatp is Sv48.
+- Updated current source-visible labels from sv39/Sv39 to sv48/Sv48.
+
+Build verification:
+- All four targets clean-build successfully with canonical runner CPPFLAGS.
+- Logs:
+  - logs/xiangshan-v2/spectre-v1-priv-kmhv2/20260717-sv48/build-only.log
+  - logs/xiangshan-v2/spectre-v1-asid-kmhv2/20260717-sv48/build-only.log
+  - logs/xiangshan-v2/spectre-v1-vmid-kmhv2/20260717-sv48/build-only.log
+  - logs/xiangshan-v2/spectre-v2-privilege-kmhv2/20260717-sv48/build-only.log
+
+Static verification:
+- Current source grep finds no Sv39/sv39/SATP_MODE_SV39/8ull<<60 usage in the four active source directories.
+- Generated binaries contain Sv48 labels.
+- Disassembly shows MODE=9 construction before satp/vsatp writes.
+
+Runtime verification on current KMHv2 emulator:
+- Runtime completion is not claimed.
+- v1-priv full run was interrupted after it stopped making progress near the low-privilege transition; log shows Sv48 startup banner.
+- ASID, VMID, and V2 privilege short runs also stop around their Sv48 startup banners under timeout.
+- Logs:
+  - logs/xiangshan-v2/spectre-v1-priv-kmhv2/20260717-sv48/run.log
+  - logs/xiangshan-v2/spectre-v1-asid-kmhv2/20260717-sv48/run-short.log
+  - logs/xiangshan-v2/spectre-v1-vmid-kmhv2/20260717-sv48/run-short.log
+  - logs/xiangshan-v2/spectre-v2-privilege-kmhv2/20260717-sv48/run-short.log
