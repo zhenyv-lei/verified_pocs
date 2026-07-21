@@ -1,0 +1,43 @@
+{
+  "status": "ASSERTION_FAIL",
+  "parser_kind": "v2-hs-sv39",
+  "expected_secret": "S3CreT",
+  "observed_expected": "S3CreT",
+  "observed_guess": "SPWVF3",
+  "rows": [
+    {
+      "index": 0,
+      "expected": "S",
+      "guess": "S"
+    },
+    {
+      "index": 1,
+      "expected": "3",
+      "guess": "P"
+    },
+    {
+      "index": 2,
+      "expected": "C",
+      "guess": "W"
+    },
+    {
+      "index": 3,
+      "expected": "r",
+      "guess": "V"
+    },
+    {
+      "index": 4,
+      "expected": "e",
+      "guess": "F"
+    },
+    {
+      "index": 5,
+      "expected": "T",
+      "guess": "3"
+    }
+  ],
+  "row_count": 6,
+  "isolation_ok": true,
+  "check_pass": false,
+  "log": "/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v2-hs-sv39-kmhv2/profiles/sv39/runs/20260721Tcanonical2-v2hs-kmhv2-sv39/run.log"
+}

@@ -1,0 +1,41 @@
+[profile-runner] stage=build
+[profile-runner] profile=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-vu-sv48-kmhv2/profiles/sv48
+[profile-runner] processor=xiangshan-v2
+[profile-runner] poc_id=spectre-v1-vu-sv48-kmhv2
+[profile-runner] vm_mode=sv48
+[profile-runner] run_id=20260721Tbuild3-v1vu-kmhv2-sv48
+[profile-runner] am_home=/nfs/home/leizhenyu/opt/verified_poc/.scratch/nexus-am-kmhv2
+[profile-runner] emu=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-vu-sv48-kmhv2/profiles/sv48/runtime/kmhv2-emu/emu
+[profile-runner] emu_runtime_dir=kmhv2-emu
+[profile-runner] emu_candidate_id=kmhv2-emu-current-nodifftest
+[profile-runner] emu_sha256=670bc8b50be511ef5f184a0b9d2a250bd94b68e72d9e06ffecf3721bdda60783
+[profile-runner] arch=riscv64-xs
+[profile-runner] march=rv64gch_zba_zbb_zbc_zbs_zbkb_zbkc_zbkx_zknd_zkne_zknh_zkr_zksed_zksh_zkt_zicbom_zicboz
+[profile-runner] cppflags=-DCACHE_HIT_THRESHOLD=80 -DUSE_FIXED_CACHE_HIT_THRESHOLD=1 -DSECRET_SZ=6 -DSECRET_OFFSET=0 -DATTACK_SAME_ROUNDS=3 -DTRAIN_TIMES=6 -DEARLY_STOP=0 -DEARLY_STOP_MIN_SCORE=3 -DEARLY_STOP_GAP=2 -DPROBE_CANDIDATES=62 -DFULL_BYTE_PROBE=0 -DFLUSH_LINES=256 -DROUNDS=1 -DCONTROL_ONLY=0 -DFILTER_KNOWN_NOISE=0
+[profile-runner] parser_kind=v1-vu-sv48
+[profile-runner] expected_secret_len=6
+[profile-runner] constantin_mode=embedded
+[profile-runner] seed=0
+[profile-runner] stack_kb=32768
+[profile-runner] wall_timeout=90m
+make -C /nfs/home/leizhenyu/opt/verified_poc/.scratch/xiangshan-v2/spectre-v1-vu-sv48-kmhv2/sv48/20260721Tbuild3-v1vu-kmhv2-sv48/source clean AM_HOME=/nfs/home/leizhenyu/opt/verified_poc/.scratch/nexus-am-kmhv2 ARCH=riscv64-xs
+make -C /nfs/home/leizhenyu/opt/verified_poc/.scratch/xiangshan-v2/spectre-v1-vu-sv48-kmhv2/sv48/20260721Tbuild3-v1vu-kmhv2-sv48/source AM_HOME=/nfs/home/leizhenyu/opt/verified_poc/.scratch/nexus-am-kmhv2 ARCH=riscv64-xs LINUX_GNU_TOOLCHAIN=1 MARCH=rv64gch_zba_zbb_zbc_zbs_zbkb_zbkc_zbkx_zknd_zkne_zknh_zkr_zksed_zksh_zkt_zicbom_zicboz CC_OPT= CPPFLAGS=-DCACHE_HIT_THRESHOLD=80\ -DUSE_FIXED_CACHE_HIT_THRESHOLD=1\ -DSECRET_SZ=6\ -DSECRET_OFFSET=0\ -DATTACK_SAME_ROUNDS=3\ -DTRAIN_TIMES=6\ -DEARLY_STOP=0\ -DEARLY_STOP_MIN_SCORE=3\ -DEARLY_STOP_GAP=2\ -DPROBE_CANDIDATES=62\ -DFULL_BYTE_PROBE=0\ -DFLUSH_LINES=256\ -DROUNDS=1\ -DCONTROL_ONLY=0\ -DFILTER_KNOWN_NOISE=0 -j8
+make: Entering directory '/nfs/home/leizhenyu/opt/verified_poc/.scratch/xiangshan-v2/spectre-v1-vu-sv48-kmhv2/sv48/20260721Tbuild3-v1vu-kmhv2-sv48/source'
+# Building spectre-v1-vu-sv48-kmhv2 [riscv64-xs] with AM_HOME {/nfs/home/leizhenyu/opt/verified_poc/.scratch/nexus-am-kmhv2}
+make[1]: Entering directory '/nfs/home/leizhenyu/opt/verified_poc/.scratch/nexus-am-kmhv2'
++ CC src/spectre-v1-vu-sv48-kmhv2.c
+make[1]: Entering directory '/nfs/home/leizhenyu/opt/verified_poc/.scratch/nexus-am-kmhv2/libs/klib'
++ AS src/zz_u_text_end.S
+# Building lib-klib [riscv64-xs]
+/nfs/home/leizhenyu/opt/verified_poc/.scratch/xiangshan-v2/spectre-v1-vu-sv48-kmhv2/sv48/20260721Tbuild3-v1vu-kmhv2-sv48/source/src/spectre-v1-vu-sv48-kmhv2.c:504:19: warning: 'enough_confidence' defined but not used [-Wunused-function]
+  504 | static U_TEXT int enough_confidence(uint64_t *results)
+      |                   ^~~~~~~~~~~~~~~~~
+make[1]: Leaving directory '/nfs/home/leizhenyu/opt/verified_poc/.scratch/nexus-am-kmhv2/libs/klib'
+make[2]: Entering directory '/nfs/home/leizhenyu/opt/verified_poc/.scratch/nexus-am-kmhv2/am'
+# Building lib-am [riscv64-xs]
+make[2]: Leaving directory '/nfs/home/leizhenyu/opt/verified_poc/.scratch/nexus-am-kmhv2/am'
+make[1]: Leaving directory '/nfs/home/leizhenyu/opt/verified_poc/.scratch/nexus-am-kmhv2'
+# Creating binary image [riscv64-xs]
++ LD -> build/spectre-v1-vu-sv48-kmhv2-riscv64-xs.elf
++ OBJCOPY -> build/spectre-v1-vu-sv48-kmhv2-riscv64-xs.bin
+make: Leaving directory '/nfs/home/leizhenyu/opt/verified_poc/.scratch/xiangshan-v2/spectre-v1-vu-sv48-kmhv2/sv48/20260721Tbuild3-v1vu-kmhv2-sv48/source'

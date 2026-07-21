@@ -1,0 +1,7 @@
+emu compiled at Jul 16 2026, 15:50:09
+[INFO] init for constantin: loaded from init.
+Using simulated 32768B flash
+Core  0's Commit SHA is: 2acbf327cf, dirty: 0
+Using simulated 8386560MB RAM
+The image is targets/xiangshan/workloads/spectre-v2-vs-sv39-kmhv2/build/spectre-v2-vs-sv39-kmhv2-riscv64-xs.bin
+[v2-vs-sv39] model=sv39-vmid-vs-isolation attacker=VS victim=VS service=machine-hypervisor-sche

@@ -1,0 +1,12 @@
+{
+  "status": "ASSERTION_FAIL",
+  "parser_kind": "v2-hs-sv39",
+  "expected_secret": "S3CreT",
+  "observed_expected": "",
+  "observed_guess": "",
+  "rows": [],
+  "row_count": 0,
+  "isolation_ok": false,
+  "check_pass": false,
+  "log": "/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v2-hs-sv39-kmhv2/profiles/sv39/runs/20260721Tcanonical-v2hs-kmhv2-sv39/run.log"
+}

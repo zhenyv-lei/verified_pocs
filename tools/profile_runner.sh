@@ -189,6 +189,32 @@ emit_status_summary() {
 SUMMARY
 }
 
+complete_assertion_fail() {
+  local result="$RUN_DIR/result.json"
+  [[ -f "$result" ]] || return 1
+  python3 - "$result" "$EXPECTED_SECRET" <<'PY'
+import json
+import sys
+
+try:
+    result = json.load(open(sys.argv[1]))
+except Exception:
+    raise SystemExit(1)
+
+expected = sys.argv[2]
+observed_guess = result.get("observed_guess")
+ok = (
+    result.get("status") == "ASSERTION_FAIL"
+    and result.get("row_count") == len(expected)
+    and result.get("observed_expected") == expected
+    and isinstance(observed_guess, str)
+    and len(observed_guess) == len(expected)
+    and result.get("isolation_ok") is True
+)
+raise SystemExit(0 if ok else 1)
+PY
+}
+
 write_command_record() {
   local image="$SCRATCH_DIR/source/build/$IMAGE_NAME"
   {
@@ -410,15 +436,19 @@ if [[ "$STAGE" == all || "$STAGE" == parse ]]; then
   else
     parse_exit=$?
   fi
-  if [[ "$run_exit" -ne 0 ]]; then
-    final_status=$(classify_run "$run_exit")
-  elif [[ "$parse_exit" -eq 0 ]]; then
+  if [[ "$parse_exit" -eq 0 ]]; then
     final_status=ASSERTION_PASS
+  elif complete_assertion_fail; then
+    final_status=ASSERTION_FAIL
+  elif [[ "$run_exit" -ne 0 ]]; then
+    final_status=$(classify_run "$run_exit")
   else
     final_status=ASSERTION_FAIL
   fi
   write_status "$final_status" "$verify_exit" "$build_exit" "$run_exit" "$parse_exit"
   emit_status_summary "$final_status"
+  if [[ "$parse_exit" -eq 0 ]]; then exit 0; fi
+  if complete_assertion_fail; then exit "$parse_exit"; fi
   if [[ "$run_exit" -ne 0 ]]; then exit "$run_exit"; fi
   exit "$parse_exit"
 fi

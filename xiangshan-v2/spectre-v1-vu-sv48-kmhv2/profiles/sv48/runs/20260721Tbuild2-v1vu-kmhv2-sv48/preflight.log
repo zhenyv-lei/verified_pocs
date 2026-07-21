@@ -1,0 +1,33 @@
+[profile-runner] stage=preflight
+[profile-runner] profile=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-vu-sv48-kmhv2/profiles/sv48
+[profile-runner] processor=xiangshan-v2
+[profile-runner] poc_id=spectre-v1-vu-sv48-kmhv2
+[profile-runner] vm_mode=sv48
+[profile-runner] run_id=20260721Tbuild2-v1vu-kmhv2-sv48
+[profile-runner] am_home=/nfs/home/leizhenyu/opt/verified_poc/.scratch/nexus-am-kmhv2
+[profile-runner] emu=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-vu-sv48-kmhv2/profiles/sv48/runtime/kmhv2-emu/emu
+[profile-runner] emu_runtime_dir=kmhv2-emu
+[profile-runner] emu_candidate_id=kmhv2-emu-sv48-health
+[profile-runner] emu_sha256=670bc8b50be511ef5f184a0b9d2a250bd94b68e72d9e06ffecf3721bdda60783
+[profile-runner] arch=riscv64-xs
+[profile-runner] march=rv64gch_zba_zbb_zbc_zbs_zbkb_zbkc_zbkx_zknd_zkne_zknh_zkr_zksed_zksh_zkt_zicbom_zicboz
+[profile-runner] cppflags=-DCACHE_HIT_THRESHOLD=80 -DUSE_FIXED_CACHE_HIT_THRESHOLD=1 -DSECRET_SZ=6 -DSECRET_OFFSET=0 -DATTACK_SAME_ROUNDS=3 -DTRAIN_TIMES=6 -DEARLY_STOP=0 -DEARLY_STOP_MIN_SCORE=3 -DEARLY_STOP_GAP=2 -DPROBE_CANDIDATES=62 -DFULL_BYTE_PROBE=0 -DFLUSH_LINES=256 -DROUNDS=1 -DCONTROL_ONLY=0 -DFILTER_KNOWN_NOISE=0
+[profile-runner] parser_kind=v1-vu-sv48
+[profile-runner] expected_secret_len=6
+[profile-runner] constantin_mode=embedded
+[profile-runner] seed=0
+[profile-runner] stack_kb=32768
+[profile-runner] wall_timeout=90m
+profile=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-vu-sv48-kmhv2/profiles/sv48
+source_tree_sha256=95067d8d4a662aa285a0d20a1d55c264ef2cf6ca73f239657d4c21d7202b085f
+emu=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-vu-sv48-kmhv2/profiles/sv48/runtime/kmhv2-emu/emu
+	linux-vdso.so.1 (0x000079f7fc559000)
+	libz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x000079f7f234e000)
+	libzstd.so.1 => /lib/x86_64-linux-gnu/libzstd.so.1 (0x000079f7f2294000)
+	libatomic.so.1 => /lib/x86_64-linux-gnu/libatomic.so.1 (0x000079f7f2289000)
+	libstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x000079f7f2000000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x000079f7f1f17000)
+	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x000079f7f1ee9000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x000079f7f1c00000)
+	/lib64/ld-linux-x86-64.so.2 (0x000079f7fc55b000)
+PACKAGE_AND_RUNTIME_PREFLIGHT_PASS

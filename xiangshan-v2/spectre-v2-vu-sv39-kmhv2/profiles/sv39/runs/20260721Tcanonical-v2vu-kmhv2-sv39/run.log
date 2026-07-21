@@ -1,0 +1,38 @@
+[profile-runner] stage=run
+[profile-runner] profile=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v2-vu-sv39-kmhv2/profiles/sv39
+[profile-runner] processor=xiangshan-v2
+[profile-runner] poc_id=spectre-v2-vu-sv39-kmhv2
+[profile-runner] vm_mode=sv39
+[profile-runner] run_id=20260721Tcanonical-v2vu-kmhv2-sv39
+[profile-runner] am_home=/nfs/home/leizhenyu/opt/verified_poc/.scratch/nexus-am-kmhv2
+[profile-runner] emu=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v2-vu-sv39-kmhv2/profiles/sv39/runtime/kmhv2-emu/emu
+[profile-runner] emu_runtime_dir=kmhv2-emu
+[profile-runner] emu_candidate_id=kmhv2-emu-16threads
+[profile-runner] emu_sha256=6ffccdb29be51b34133ed736075ca6a97cd006ead5ecb4dded599c06f7e67903
+[profile-runner] arch=riscv64-xs
+[profile-runner] march=rv64gc_h_zba_zbb_zbc_zbs_zbkb_zbkc_zbkx_zknd_zkne_zknh_zkr_zksed_zksh_zkt_zicbom_zicboz
+[profile-runner] cppflags=-DCACHE_HIT_THRESHOLD=70 -DUSE_FIXED_CACHE_HIT_THRESHOLD=0 -DSECRET_SZ=6 -DSECRET_OFFSET=0 -DV2_ATTACK_TRIES=16 -DV2_TRAINING_LOOPS=32 -DPROBE_CANDIDATES=62 -DFULL_BYTE_PROBE=0 -DEARLY_STOP=1 -DEARLY_STOP_MIN_SCORE=3 -DEARLY_STOP_GAP=2 -DV2_ASM_CONTROL_ROUND=0 -DV2_PROBE_CONTROL_ROUND=0 -DV2_PROBE_MIX=0
+[profile-runner] parser_kind=v2-vu-sv39
+[profile-runner] expected_secret_len=6
+[profile-runner] constantin_mode=embedded
+[profile-runner] seed=0
+[profile-runner] stack_kb=32768
+[profile-runner] wall_timeout=30m
+NOOP_HOME=embedded-default-not-overridden
+ulimit -s 32768
+timeout 30m /nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v2-vu-sv39-kmhv2/profiles/sv39/runtime/kmhv2-emu/emu --no-diff --seed=0 -i /nfs/home/leizhenyu/opt/verified_poc/.scratch/xiangshan-v2/spectre-v2-vu-sv39-kmhv2/sv39/20260721Tcanonical-v2vu-kmhv2-sv39/image
+emu compiled at Jun 29 2026, 18:08:52
+Using seed = 0
+[INFO] init for constantin: loaded from init.
+Using simulated 32768B flash
+Core  0's Commit SHA is: 2acbf327cf, dirty: 0
+Using simulated 8386560MB RAM
+The image is /nfs/home/leizhenyu/opt/verified_poc/.scratch/xiangshan-v2/spectre-v2-vu-sv39-kmhv2/sv39/20260721Tcanonical-v2vu-kmhv2-sv39/image
+ELF file detected and loading image from extracted elf file
+Loading 25768 bytes at address 0x80000000 at offset 0x0
+Loading 839680 bytes at address 0x80007000 at offset 0x7000
+[v2-vu-sv39] model=sv39-vmid-vu-isolation attacker=VU victim=VU service=machine-hypervisor-scheduler hgatp_mode=bare attacker_vmid=17 victim_vmid=23 normalized_attacker_vmid=17 normalized_victim_vmid=23 fence_on_switch=0 filter_known_noise=0 secret_sz=6 candidates=62 tries=256 train=0 warmup=0 asm_control=0 probe_control=0 probe_mix=0 early_strict=0 asm_style=85 flush_lines=1080033292 control_only=0
+[v2-vu-sv39] secret_offset=0
+[v2-vu-sv39] calibration fallback=70 measured=85 threshold=85 fixed=0
+[v2-vu-sv39] isolation attacker_direct_victim_secret=expect-fault shared_probe=mapped-both victim_data=mapped-victim-vm-only hgatp_mode=bare hgatp_vmid=on
+[v2-vu-sv39] victim_secret=000000008001D000 probe=0000000080018000 gadget=0000000080002680 safe_target=00000000800026C0

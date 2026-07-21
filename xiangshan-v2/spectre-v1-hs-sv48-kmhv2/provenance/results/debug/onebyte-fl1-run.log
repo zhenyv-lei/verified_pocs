@@ -1,0 +1,16 @@
+2026-07-17T21:51:09+08:00
+/nfs/home/leizhenyu/opt/DUTs/XiangShan/build/emu --no-diff -i /nfs/home/leizhenyu/opt/testbench/targets/xiangshan/logs/spectre-v1-sv48-fullstring-recovery-20260717/health-cells/onebyte-fl1-spectre-v1-hs-sv48-kmhv2-riscv64-xs.elf
+emu compiled at Jul 16 2026, 15:50:09
+[INFO] init for constantin: loaded from init.
+Using simulated 32768B flash
+Core  0's Commit SHA is: 2acbf327cf, dirty: 0
+Using simulated 8386560MB RAM
+The image is /nfs/home/leizhenyu/opt/testbench/targets/xiangshan/logs/spectre-v1-sv48-fullstring-recovery-20260717/health-cells/onebyte-fl1-spectre-v1-hs-sv48-kmhv2-riscv64-xs.elf
+ELF file detected and loading image from extracted elf file
+Loading 20808 bytes at address 0x80000000 at offset 0x0
+Loading 823448 bytes at address 0x80006000 at offset 0x6000
+[hs] pre satp=9001100000080075
+[hs] done s=0 t=47 b=0 c=9 n=1
+[hs] b0 e=53 g=30 gs=3 s2=31 s2s=3 r=3
+EMU_MONITOR_DONE matched=1
+2026-07-17T21:56:39+08:00

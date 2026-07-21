@@ -1,0 +1,8 @@
+emu compiled at Jul 16 2026, 15:50:09
+[INFO] init for constantin: loaded from init.
+Using simulated 32768B flash
+Core  0's Commit SHA is: 2acbf327cf, dirty: 0
+Using simulated 8386560MB RAM
+The image is /nfs/home/leizhenyu/opt/testbench/targets/xiangshan/workloads/spectre-v2-hs-sv39-kmhv2/build/spectre-v2-hs-sv39-kmhv2-riscv64-xs.bin
+[hs] done s=0 t=2 b=0 c=9 n=1
+[hs] b0 e=53

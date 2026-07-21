@@ -1,0 +1,21 @@
+{
+  "run_id": "20260721Tbuild2-v2hs-kmhv2-sv39",
+  "processor": "xiangshan-v2",
+  "poc_id": "spectre-v2-hs-sv39-kmhv2",
+  "vm_mode": "sv39",
+  "status": "BUILD_PASS",
+  "verify_exit": 0,
+  "build_exit": 0,
+  "run_exit": 125,
+  "parse_exit": 125,
+  "timeout": false,
+  "signal": 0,
+  "started_at": "2026-07-21T05:04:09Z",
+  "finished_at": "2026-07-21T05:04:10Z",
+  "elapsed_sec": 1,
+  "seed": 0,
+  "max_cycles": null,
+  "emu_candidate_id": "kmhv2-emu-16threads",
+  "emu_sha256": "6ffccdb29be51b34133ed736075ca6a97cd006ead5ecb4dded599c06f7e67903",
+  "scratch": "/nfs/home/leizhenyu/opt/verified_poc/.scratch/xiangshan-v2/spectre-v2-hs-sv39-kmhv2/sv39/20260721Tbuild2-v2hs-kmhv2-sv39"
+}

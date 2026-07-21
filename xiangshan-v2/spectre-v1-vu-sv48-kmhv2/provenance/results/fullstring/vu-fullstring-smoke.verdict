@@ -1,0 +1,1 @@
+PASS cell=fullstring-smoke matched_regex=^\[vu\] b5 .* r=

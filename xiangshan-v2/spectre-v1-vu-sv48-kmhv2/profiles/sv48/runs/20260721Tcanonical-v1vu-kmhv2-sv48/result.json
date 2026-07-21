@@ -1,0 +1,38 @@
+{
+  "status": "ASSERTION_FAIL",
+  "parser_kind": "v1-vu-sv48",
+  "expected_secret": "S3CreT",
+  "observed_expected": "S3Cre",
+  "observed_guess": "S3Cre",
+  "rows": [
+    {
+      "index": 0,
+      "expected": "S",
+      "guess": "S"
+    },
+    {
+      "index": 1,
+      "expected": "3",
+      "guess": "3"
+    },
+    {
+      "index": 2,
+      "expected": "C",
+      "guess": "C"
+    },
+    {
+      "index": 3,
+      "expected": "r",
+      "guess": "r"
+    },
+    {
+      "index": 4,
+      "expected": "e",
+      "guess": "e"
+    }
+  ],
+  "row_count": 5,
+  "isolation_ok": true,
+  "check_pass": false,
+  "log": "/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-vu-sv48-kmhv2/profiles/sv48/runs/20260721Tcanonical-v1vu-kmhv2-sv48/run.log"
+}

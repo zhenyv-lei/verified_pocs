@@ -1,0 +1,34 @@
+[profile-runner] stage=preflight
+[profile-runner] profile=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v2-hs-sv39-kmhv2/profiles/sv39
+[profile-runner] processor=xiangshan-v2
+[profile-runner] poc_id=spectre-v2-hs-sv39-kmhv2
+[profile-runner] vm_mode=sv39
+[profile-runner] run_id=20260721Tbuild2-v2hs-kmhv2-sv39
+[profile-runner] am_home=/nfs/home/leizhenyu/opt/verified_poc/.scratch/nexus-am-kmhv2
+[profile-runner] emu=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v2-hs-sv39-kmhv2/profiles/sv39/runtime/kmhv2-emu/emu
+[profile-runner] emu_runtime_dir=kmhv2-emu
+[profile-runner] emu_candidate_id=kmhv2-emu-16threads
+[profile-runner] emu_sha256=6ffccdb29be51b34133ed736075ca6a97cd006ead5ecb4dded599c06f7e67903
+[profile-runner] arch=riscv64-xs
+[profile-runner] march=rv64gc_zba_zbb_zbc_zbs_zbkb_zbkc_zbkx_zknd_zkne_zknh_zkr_zksed_zksh_zkt_zicbom_zicboz
+[profile-runner] cppflags=-DCACHE_HIT_THRESHOLD=70 -DUSE_FIXED_CACHE_HIT_THRESHOLD=0 -DSECRET_SZ=6 -DSECRET_OFFSET=0 -DV2_ATTACK_TRIES=16 -DV2_TRAINING_LOOPS=32 -DPROBE_CANDIDATES=62 -DFULL_BYTE_PROBE=0 -DEARLY_STOP=1 -DEARLY_STOP_MIN_SCORE=3 -DEARLY_STOP_GAP=2 -DV2_ASM_CONTROL_ROUND=0 -DV2_PROBE_CONTROL_ROUND=0 -DV2_PROBE_MIX=0
+[profile-runner] parser_kind=v2-hs-sv39
+[profile-runner] expected_secret_len=6
+[profile-runner] constantin_mode=embedded
+[profile-runner] seed=0
+[profile-runner] stack_kb=32768
+[profile-runner] wall_timeout=30m
+profile=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v2-hs-sv39-kmhv2/profiles/sv39
+source_tree_sha256=36b9efd89eea3b467a816a00077ee7d762d14438fba1212007775f9d3881e8bd
+emu=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v2-hs-sv39-kmhv2/profiles/sv39/runtime/kmhv2-emu/emu
+	linux-vdso.so.1 (0x00007cd594c21000)
+	libsqlite3.so.0 => /lib/x86_64-linux-gnu/libsqlite3.so.0 (0x00007cd58f229000)
+	libz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x00007cd58f20d000)
+	libzstd.so.1 => /lib/x86_64-linux-gnu/libzstd.so.1 (0x00007cd58f153000)
+	libatomic.so.1 => /lib/x86_64-linux-gnu/libatomic.so.1 (0x00007cd58f148000)
+	libstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007cd58ee00000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007cd58ed17000)
+	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007cd58f118000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007cd58ea00000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007cd594c23000)
+PACKAGE_AND_RUNTIME_PREFLIGHT_PASS

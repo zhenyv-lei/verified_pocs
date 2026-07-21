@@ -1,0 +1,20 @@
+# Building spectre-v1-vs-sv48-kmhv2 [] with AM_HOME {/nfs/home/leizhenyu/opt/testbench/.local/nexus-am-kmhv2}
+rm -rf /nfs/home/leizhenyu/opt/testbench/targets/xiangshan/workloads/spectre-v1-vs-sv48-kmhv2/build/
+# Building spectre-v1-vs-sv48-kmhv2 [riscv64-xs] with AM_HOME {/nfs/home/leizhenyu/opt/testbench/.local/nexus-am-kmhv2}
++ CC src/spectre-v1-vs-sv48-kmhv2.c
+/nfs/home/leizhenyu/opt/testbench/targets/xiangshan/workloads/spectre-v1-vs-sv48-kmhv2/src/spectre-v1-vs-sv48-kmhv2.c: In function ‘main’:
+/nfs/home/leizhenyu/opt/testbench/targets/xiangshan/workloads/spectre-v1-vs-sv48-kmhv2/src/spectre-v1-vs-sv48-kmhv2.c:970:12: warning: unused variable ‘measured_threshold’ [-Wunused-variable]
+  970 |   uint64_t measured_threshold = CACHE_HIT_THRESHOLD;
+      |            ^~~~~~~~~~~~~~~~~~
+/nfs/home/leizhenyu/opt/testbench/targets/xiangshan/workloads/spectre-v1-vs-sv48-kmhv2/src/spectre-v1-vs-sv48-kmhv2.c: At top level:
+/nfs/home/leizhenyu/opt/testbench/targets/xiangshan/workloads/spectre-v1-vs-sv48-kmhv2/src/spectre-v1-vs-sv48-kmhv2.c:505:19: warning: ‘enough_confidence’ defined but not used [-Wunused-function]
+  505 | static U_TEXT int enough_confidence(uint64_t *results)
+      |                   ^~~~~~~~~~~~~~~~~
++ AS src/zz_u_text_end.S
+# Building lib-am [riscv64-xs]
++ AS src/nemu/common/mainargs.S
++ AR -> build/am-riscv64-xs.a
+# Building lib-klib [riscv64-xs]
+# Creating binary image [riscv64-xs]
++ LD -> build/spectre-v1-vs-sv48-kmhv2-riscv64-xs.elf
++ OBJCOPY -> build/spectre-v1-vs-sv48-kmhv2-riscv64-xs.bin

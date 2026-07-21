@@ -1,0 +1,21 @@
+{
+  "run_id": "20260721Tprep3-v1vu-kmhv2-sv48",
+  "processor": "xiangshan-v2",
+  "poc_id": "spectre-v1-vu-sv48-kmhv2",
+  "vm_mode": "sv48",
+  "status": "PACKAGE_PASS",
+  "verify_exit": 0,
+  "build_exit": 125,
+  "run_exit": 125,
+  "parse_exit": 125,
+  "timeout": false,
+  "signal": 0,
+  "started_at": "2026-07-21T05:11:50Z",
+  "finished_at": "2026-07-21T05:11:50Z",
+  "elapsed_sec": 0,
+  "seed": 0,
+  "max_cycles": null,
+  "emu_candidate_id": "kmhv2-emu-current-nodifftest",
+  "emu_sha256": "670bc8b50be511ef5f184a0b9d2a250bd94b68e72d9e06ffecf3721bdda60783",
+  "scratch": "/nfs/home/leizhenyu/opt/verified_poc/.scratch/xiangshan-v2/spectre-v1-vu-sv48-kmhv2/sv48/20260721Tprep3-v1vu-kmhv2-sv48"
+}

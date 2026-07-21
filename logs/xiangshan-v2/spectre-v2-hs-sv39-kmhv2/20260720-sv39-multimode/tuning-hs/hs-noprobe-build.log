@@ -1,0 +1,50 @@
+make: Entering directory '/nfs/home/leizhenyu/opt/testbench/targets/xiangshan/workloads/spectre-v2-hs-sv39-kmhv2'
+# Building spectre-v2-hs-sv39-kmhv2 [riscv64-xs] with AM_HOME {/nfs/home/leizhenyu/opt/testbench/.local/nexus-am-kmhv2}
++ CC src/spectre-v2-hs-sv39-kmhv2.c
+make[1]: Entering directory '/nfs/home/leizhenyu/opt/testbench/.local/nexus-am-kmhv2'
+make[1]: Entering directory '/nfs/home/leizhenyu/opt/testbench/.local/nexus-am-kmhv2/libs/klib'
++ AS src/zz_u_text_end.S
+# Building lib-klib [riscv64-xs]
+/nfs/home/leizhenyu/opt/testbench/targets/xiangshan/workloads/spectre-v2-hs-sv39-kmhv2/src/spectre-v2-hs-sv39-kmhv2.c: In function ‘main’:
+/nfs/home/leizhenyu/opt/testbench/targets/xiangshan/workloads/spectre-v2-hs-sv39-kmhv2/src/spectre-v2-hs-sv39-kmhv2.c:1142:12: warning: unused variable ‘measured_threshold’ [-Wunused-variable]
+ 1142 |   uint64_t measured_threshold = CACHE_HIT_THRESHOLD;
+      |            ^~~~~~~~~~~~~~~~~~
++ CC src/printf.c
++ CC src/int64.c
++ CC src/cpp.c
++ CC src/atomic.c
+make[2]: Entering directory '/nfs/home/leizhenyu/opt/testbench/.local/nexus-am-kmhv2/am'
+# Building lib-am [riscv64-xs]
++ CC src/string.c
++ CC src/stdlib.c
++ CC src/noop/isa/riscv/trm.c
++ AS src/nemu/common/mainargs.S
++ CC src/io.c
++ CC src/noop/isa/riscv/perf.c
++ CC src/noop/common/uartlite.c
++ CC src/noop/common/serial-16550.c
++ CC src/nemu/isa/riscv/cte.c
++ AS src/nemu/isa/riscv/trap.S
++ AR -> build/klib-riscv64-xs.a
++ CC src/nemu/isa/riscv/cte64.c
++ AS src/nemu/isa/riscv/mtime.S
++ CC src/nemu/isa/riscv/vme.c
++ CC src/xs/common/ioe.c
++ CC src/noop/common/input.c
+make[1]: Leaving directory '/nfs/home/leizhenyu/opt/testbench/.local/nexus-am-kmhv2/libs/klib'
++ CC src/noop/common/timer.c
++ CC src/noop/isa/riscv/instr.c
++ CC src/xs/isa/riscv/mpe.c
++ CC src/xs/isa/riscv/clint.c
++ CC src/xs/isa/riscv/pmp.c
++ CC src/xs/isa/riscv/plic.c
++ CC src/xs/isa/riscv/pma.c
++ CC src/xs/isa/riscv/cache.c
++ AS src/nemu/isa/riscv/boot/start.S
++ AR -> build/am-riscv64-xs.a
+make[2]: Leaving directory '/nfs/home/leizhenyu/opt/testbench/.local/nexus-am-kmhv2/am'
+make[1]: Leaving directory '/nfs/home/leizhenyu/opt/testbench/.local/nexus-am-kmhv2'
+# Creating binary image [riscv64-xs]
++ LD -> build/spectre-v2-hs-sv39-kmhv2-riscv64-xs.elf
++ OBJCOPY -> build/spectre-v2-hs-sv39-kmhv2-riscv64-xs.bin
+make: Leaving directory '/nfs/home/leizhenyu/opt/testbench/targets/xiangshan/workloads/spectre-v2-hs-sv39-kmhv2'

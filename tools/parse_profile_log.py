@@ -54,6 +54,20 @@ def parse_priv(text: str, tag: str):
     return rows
 
 
+TAGGED_PRIV_KINDS = {
+    "v1-priv",
+    "v1-asid-priv",
+    "v1-vmid-priv",
+    "v2_priv",
+    "v1-hs-sv48",
+    "v1-vs-sv48",
+    "v1-vu-sv48",
+    "v2-hs-sv39",
+    "v2-vs-sv39",
+    "v2-vu-sv39",
+}
+
+
 def main(argv: list[str]) -> int:
     if len(argv) != 5:
         print("usage: parse_profile_log.py KIND EXPECTED_SECRET RUN_LOG RESULT_JSON", file=sys.stderr)
@@ -73,7 +87,7 @@ def main(argv: list[str]) -> int:
     elif kind == "v2_basic":
         rows = parse_v2_basic(text)
         isolation_ok = True
-    elif kind in {"v1-priv", "v1-asid-priv", "v1-vmid-priv", "v2_priv"}:
+    elif kind in TAGGED_PRIV_KINDS:
         rows = parse_priv(text, kind)
         isolation_ok = bool(re.search(r"isolation[^\n]*fault_seen=1", text))
     else:

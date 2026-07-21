@@ -1,0 +1,28 @@
+{
+  "status": "ASSERTION_FAIL",
+  "parser_kind": "v1-vs-sv48",
+  "expected_secret": "S3CreT",
+  "observed_expected": "S3C",
+  "observed_guess": "S3C",
+  "rows": [
+    {
+      "index": 0,
+      "expected": "S",
+      "guess": "S"
+    },
+    {
+      "index": 1,
+      "expected": "3",
+      "guess": "3"
+    },
+    {
+      "index": 2,
+      "expected": "C",
+      "guess": "C"
+    }
+  ],
+  "row_count": 3,
+  "isolation_ok": true,
+  "check_pass": false,
+  "log": "/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-vs-sv48-kmhv2/profiles/sv48/runs/20260721Tcanonical-v1vs-kmhv2-sv48/run.log"
+}

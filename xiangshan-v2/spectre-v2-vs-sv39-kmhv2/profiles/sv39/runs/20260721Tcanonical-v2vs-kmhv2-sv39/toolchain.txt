@@ -1,0 +1,5 @@
+image=/nfs/home/leizhenyu/opt/verified_poc/.scratch/xiangshan-v2/spectre-v2-vs-sv39-kmhv2/sv39/20260721Tcanonical-v2vs-kmhv2-sv39/image
+/usr/bin/make
+GNU Make 4.3
+/usr/bin/riscv64-linux-gnu-gcc
+5f4e23d6430c1ae49f66d0175b96a99256e82fcf

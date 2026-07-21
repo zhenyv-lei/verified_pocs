@@ -1,0 +1,56 @@
+[profile-runner] stage=run
+[profile-runner] profile=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-vu-sv48-kmhv2/profiles/sv48
+[profile-runner] processor=xiangshan-v2
+[profile-runner] poc_id=spectre-v1-vu-sv48-kmhv2
+[profile-runner] vm_mode=sv48
+[profile-runner] run_id=20260721Tcanonical2-v1vu-kmhv2-sv48
+[profile-runner] am_home=/nfs/home/leizhenyu/opt/verified_poc/.scratch/nexus-am-kmhv2
+[profile-runner] emu=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-vu-sv48-kmhv2/profiles/sv48/runtime/kmhv2-emu/emu
+[profile-runner] emu_runtime_dir=kmhv2-emu
+[profile-runner] emu_candidate_id=kmhv2-emu-current-nodifftest
+[profile-runner] emu_sha256=670bc8b50be511ef5f184a0b9d2a250bd94b68e72d9e06ffecf3721bdda60783
+[profile-runner] arch=riscv64-xs
+[profile-runner] march=rv64gch_zba_zbb_zbc_zbs_zbkb_zbkc_zbkx_zknd_zkne_zknh_zkr_zksed_zksh_zkt_zicbom_zicboz
+[profile-runner] cppflags=-DCACHE_HIT_THRESHOLD=80 -DUSE_FIXED_CACHE_HIT_THRESHOLD=1 -DSECRET_SZ=6 -DSECRET_OFFSET=0 -DATTACK_SAME_ROUNDS=3 -DTRAIN_TIMES=6 -DEARLY_STOP=0 -DEARLY_STOP_MIN_SCORE=3 -DEARLY_STOP_GAP=2 -DPROBE_CANDIDATES=62 -DFULL_BYTE_PROBE=0 -DFLUSH_LINES=256 -DROUNDS=1 -DCONTROL_ONLY=0 -DFILTER_KNOWN_NOISE=0
+[profile-runner] parser_kind=v1-vu-sv48
+[profile-runner] expected_secret_len=6
+[profile-runner] constantin_mode=embedded
+[profile-runner] seed=0
+[profile-runner] stack_kb=32768
+[profile-runner] wall_timeout=180m
+NOOP_HOME=embedded-default-not-overridden
+ulimit -s 32768
+timeout 180m /nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-vu-sv48-kmhv2/profiles/sv48/runtime/kmhv2-emu/emu --no-diff --seed=0 -i /nfs/home/leizhenyu/opt/verified_poc/.scratch/xiangshan-v2/spectre-v1-vu-sv48-kmhv2/sv48/20260721Tcanonical2-v1vu-kmhv2-sv48/image
+emu compiled at Jul 16 2026, 15:50:09
+Using seed = 0
+[INFO] init for constantin: loaded from init.
+Using simulated 32768B flash
+Core  0's Commit SHA is: 2acbf327cf, dirty: 0
+Using simulated 8386560MB RAM
+The image is /nfs/home/leizhenyu/opt/verified_poc/.scratch/xiangshan-v2/spectre-v1-vu-sv48-kmhv2/sv48/20260721Tcanonical2-v1vu-kmhv2-sv48/image
+ELF file detected and loading image from extracted elf file
+Loading 25584 bytes at address 0x80000000 at offset 0x0
+Loading 827392 bytes at address 0x80007000 at offset 0x7000
+[v1-vu-sv48] model=sv48-vmid-vu-isolation attacker=VU victim=VU service=machine-hypervisor-scheduler hgatp_mode=bare attacker_vmid=17 victim_vmid=23 normalized_attacker_vmid=17 normalized_victim_vmid=23 fence_on_switch=0 filter_known_noise=0 secret_sz=6 candidates=62 flush_lines=256 control_only=0
+[v1-vu-sv48] secret_offset=0
+[v1-vu-sv48] calibration fallback=80 measured=85 threshold=80 fixed=1
+[v1-vu-sv48] isolation attacker_direct_victim_secret=expect-fault shared_probe=mapped-both victim_data=mapped-victim-vm-only hgatp_mode=bare hgatp_vmid=on
+[v1-vu-sv48] victim_array1=0000000080018000 victim_secret=0000000080018050 malicious_base=80 probe=0000000080013000
+[v1-vu-sv48] isolation VU-direct-victim-read fault_seen=1 completed=0 value=0x00 u_text=[0000000080002000,0000000080003000) a_data=[0000000080007000,0000000080013000) shared=[0000000080013000,0000000080018000) v_data=[0000000080018000,0000000080020000)
+[v1-vu-sv48] vsatp requested_attacker=0x9000000000080025 requested_victim=0x900000000008007b observed_attacker=0x9000000000080025 observed_victim=0x900000000008007b mode=sv48
+[v1-vu-sv48] hgatp requested_attacker=0x1100000000000 requested_victim=0x1700000000000 observed_attacker=0x1100000000000 observed_victim=0x1700000000000 vmid_mask=0x3fff00000000000 mode=bare
+[v1-vu-sv48] traps=272 victim_calls=126 victim_done=126 flush_calls=18 exit_calls=1 bad_traps=0 last_mcause=8 last_mepc=0000000080002440 status=0
+[v1-vu-sv48] byte 0: expected=S(0x53) guess=S(0x53) score=3 second=q(0x71) score=3
+[v1-vu-sv48] byte 0 rounds=3 early_stop=0 min_score=3 gap=2
+[v1-vu-sv48] byte 1: expected=3(0x33) guess=3(0x33) score=3 second=q(0x71) score=3
+[v1-vu-sv48] byte 1 rounds=3 early_stop=0 min_score=3 gap=2
+[v1-vu-sv48] byte 2: expected=C(0x43) guess=C(0x43) score=3 second=q(0x71) score=3
+[v1-vu-sv48] byte 2 rounds=3 early_stop=0 min_score=3 gap=2
+[v1-vu-sv48] byte 3: expected=r(0x72) guess=r(0x72) score=3 second=w(0x77) score=3
+[v1-vu-sv48] byte 3 rounds=3 early_stop=0 min_score=3 gap=2
+[v1-vu-sv48] byte 4: expected=e(0x65) guess=e(0x65) score=3 second=w(0x77) score=3
+[v1-vu-sv48] byte 4 rounds=3 early_stop=0 min_score=3 gap=2
+[v1-vu-sv48] byte 5: expected=T(0x54) guess=7(0x37) score=3 second=I(0x49) score=3
+[v1-vu-sv48] byte 5 rounds=3 early_stop=0 min_score=3 gap=2
+[v1-vu-sv48] check=FAIL
+Exit with code = 1
