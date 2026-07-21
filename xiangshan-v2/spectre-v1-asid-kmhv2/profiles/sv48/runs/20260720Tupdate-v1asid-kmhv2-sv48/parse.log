@@ -1,0 +1,21 @@
+[profile-runner] stage=parse
+[profile-runner] profile=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-asid-kmhv2/profiles/sv48
+[profile-runner] processor=xiangshan-v2
+[profile-runner] poc_id=spectre-v1-asid-kmhv2
+[profile-runner] vm_mode=sv48
+[profile-runner] run_id=20260720Tupdate-v1asid-kmhv2-sv48
+[profile-runner] am_home=/nfs/home/leizhenyu/opt/testbench/.local/nexus-am-kmhv2
+[profile-runner] emu=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-asid-kmhv2/profiles/sv48/runtime/kmhv2-emu/emu
+[profile-runner] emu_runtime_dir=kmhv2-emu
+[profile-runner] emu_candidate_id=kmhv2-emu-16threads
+[profile-runner] emu_sha256=6ffccdb29be51b34133ed736075ca6a97cd006ead5ecb4dded599c06f7e67903
+[profile-runner] arch=riscv64-xs
+[profile-runner] march=rv64gc_zba_zbb_zbc_zbs_zbkb_zbkc_zbkx_zknd_zkne_zknh_zkr_zksed_zksh_zkt_zicbom_zicboz
+[profile-runner] cppflags=-DSECRET_SZ=6 -DSECRET_OFFSET=0 -DATTACK_SAME_ROUNDS=5 -DTRAIN_TIMES=10 -DUSE_FIXED_CACHE_HIT_THRESHOLD=1 -DCACHE_HIT_THRESHOLD=50 -DFILTER_KNOWN_NOISE=1 -DFULL_BYTE_PROBE=0 -DPROBE_CANDIDATES=62 -DEARLY_STOP=1 -DEARLY_STOP_MIN_SCORE=3 -DEARLY_STOP_GAP=2 -DATTACKER_ASID=17 -DVICTIM_ASID=23 -DFENCE_ON_ASID_SWITCH=0
+[profile-runner] parser_kind=v1-asid-priv
+[profile-runner] expected_secret_len=6
+[profile-runner] constantin_mode=embedded
+[profile-runner] seed=0
+[profile-runner] stack_kb=32768
+[profile-runner] wall_timeout=30m
+python3 /nfs/home/leizhenyu/opt/verified_poc/tools/parse_profile_log.py v1-asid-priv S3CreT /nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-asid-kmhv2/profiles/sv48/runs/20260720Tupdate-v1asid-kmhv2-sv48/run.log /nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-asid-kmhv2/profiles/sv48/runs/20260720Tupdate-v1asid-kmhv2-sv48/result.json

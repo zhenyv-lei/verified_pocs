@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+export LC_ALL=C TZ=UTC HOME=/tmp/verified-poc/xiangshan-v2/spectre-v1-asid-kmhv2/sv39/20260720Tverify-runtime-tags/home TMPDIR=/tmp/verified-poc/xiangshan-v2/spectre-v1-asid-kmhv2/sv39/20260720Tverify-runtime-tags/tmp
+make -C /tmp/verified-poc/xiangshan-v2/spectre-v1-asid-kmhv2/sv39/20260720Tverify-runtime-tags/source clean AM_HOME=/nfs/home/leizhenyu/opt/testbench/.local/nexus-am-kmhv2 ARCH=riscv64-xs
+make -C /tmp/verified-poc/xiangshan-v2/spectre-v1-asid-kmhv2/sv39/20260720Tverify-runtime-tags/source AM_HOME=/nfs/home/leizhenyu/opt/testbench/.local/nexus-am-kmhv2 ARCH=riscv64-xs LINUX_GNU_TOOLCHAIN=1 MARCH=rv64gc_zba_zbb_zbc_zbs_zbkb_zbkc_zbkx_zknd_zkne_zknh_zkr_zksed_zksh_zkt_zicbom_zicboz CC_OPT= CPPFLAGS=-DSECRET_SZ=6\ -DSECRET_OFFSET=0\ -DATTACK_SAME_ROUNDS=5\ -DTRAIN_TIMES=10\ -DUSE_FIXED_CACHE_HIT_THRESHOLD=1\ -DCACHE_HIT_THRESHOLD=50\ -DFILTER_KNOWN_NOISE=1\ -DFULL_BYTE_PROBE=0\ -DPROBE_CANDIDATES=62\ -DEARLY_STOP=1\ -DEARLY_STOP_MIN_SCORE=3\ -DEARLY_STOP_GAP=2\ -DATTACKER_ASID=17\ -DVICTIM_ASID=23\ -DFENCE_ON_ASID_SWITCH=0 -j8
+ulimit -s 32768
+timeout 30m /nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-asid-kmhv2/profiles/sv39/runtime/kmhv2-emu/emu --no-diff --seed=0 -i /tmp/verified-poc/xiangshan-v2/spectre-v1-asid-kmhv2/sv39/20260720Tverify-runtime-tags/image
+python3 /nfs/home/leizhenyu/opt/verified_poc/tools/parse_profile_log.py v1-asid-priv S3CreT /nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-asid-kmhv2/profiles/sv39/runs/20260720Tverify-runtime-tags/run.log /nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-asid-kmhv2/profiles/sv39/runs/20260720Tverify-runtime-tags/result.json
+# source image before copy: /tmp/verified-poc/xiangshan-v2/spectre-v1-asid-kmhv2/sv39/20260720Tverify-runtime-tags/source/build/spectre-v1-asid-priv-riscv64-xs.elf

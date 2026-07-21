@@ -1,0 +1,10 @@
+The image is /nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-priv-kmhv2/code/build/spectre-v1-priv-riscv64-xs.elf
+[v1-priv] model=sv48-pte-u-isolation attacker=U victim=M isolation=Sv48-PTE-U0 secret=PTE_U0 pmp=permissive-not-boundary satp=sv48 service=machine-ecall secret_sz=2 candidates=8 flush_lines=8 control_only=0
+[v1-priv] calibration fallback=70 measured=85 threshold=85 fixed=0
+[v1-priv] control service_return=no-secret direct_secret_access=expect-fault
+[v1-priv] b_array1=0000000080007000 b_secret=0000000080007050 malicious_base=80 probe=0000000080008000
+[v1-priv-debug] enter_user_attacker begin
+[v1-priv-debug] init_pmp done
+[v1-priv-debug] mret target=0000000080002590 sp=000000008000CFF0 mstatus=8000000A00006000
+[v1-priv-debug] trap=1 cause=13 epc=00000000800022B2 a7=33 a0=000000000000005A a1=0000000080047F08 done=0 status=0
+[v1-priv-debug] trap=2 cause=8 epc=0000000080002342 a7=2 a0=000000008

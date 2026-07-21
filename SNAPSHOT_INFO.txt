@@ -1,0 +1,12 @@
+snapshot_id=verified_poc-reference-20260720
+created_at=2026-07-20T11:25:24+08:00
+source=/nfs/home/leizhenyu/opt/verified_poc
+snapshot=/nfs/home/leizhenyu/opt/verified_poc-reference-20260720
+host=open05
+kernel=Linux 6.14.0-37-generic x86_64 GNU/Linux
+source_file_count=260
+source_apparent_bytes=10357036
+copy_verification=diff-identical for all 260 regular files at capture
+excluded_runtime_dirs=.git,.agents,.codex (empty sandbox-injected directories)
+warning=logs/xiangshan-v2/spectre-v1-priv-kmhv2/20260720-sv48-2byte-150m is incomplete or status unknown: status.txt lacks run_exit and time-run.txt is empty
+warning_artifact=xiangshan-v2/spectre-v1-priv-kmhv2/code/build was most recently built with SECRET_SZ=2, not the canonical runner SECRET_SZ=6

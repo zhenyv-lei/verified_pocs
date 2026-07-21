@@ -1,0 +1,21 @@
+Sv48 1-byte run summary 2026-07-17
+poc=spectre-v1-priv-kmhv2
+run_id=20260717-sv48-1byte-fullround
+outer_timeout=45m
+process_exit=124
+program_result=check=PASS, Exit with code = 0
+recorded=2026-07-17 20:10:32 +0800
+
+[v1-priv] model=sv48-pte-u-isolation attacker=U victim=M isolation=Sv48-PTE-U0 secret=PTE_U0 pmp=permissive-not-boundary satp=sv48 service=machine-ecall secret_sz=1 candidates=62 flush_lines=256 control_only=0
+[v1-priv] calibration fallback=70 measured=85 threshold=85 fixed=0
+[v1-priv] control service_return=no-secret direct_secret_access=expect-fault
+[v1-priv] b_array1=0000000080007000 b_secret=0000000080007050 malicious_base=80 probe=0000000080008000
+[v1-priv-debug] enter_user_attacker begin
+[v1-priv-debug] init_pmp done
+[v1-priv-debug] mret target=00000000800025B0 sp=000000008000CFF0 mstatus=8000000A00006000
+[v1-priv] isolation U-direct-secret-read fault_seen=1 completed=0 value=0x00 expected=fault u_text=[0000000080002000,0000000080003000) m_secret=0000000080007050
+[v1-priv] traps=62 victim_calls=55 flush_calls=5 exit_calls=1 bad_traps=0 last_mcause=8 last_mepc=0000000080002360 status=0
+[v1-priv] byte 0: expected=S(0x53) guess=S(0x53) score=5 second=q(0x71) score=4
+[v1-priv] byte 0 rounds=5 early_stop=1 min_score=3 gap=2
+[v1-priv] check=PASS
+Exit with code = 0

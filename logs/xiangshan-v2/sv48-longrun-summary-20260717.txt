@@ -1,0 +1,61 @@
+RUN_ID=20260717-sv48-longrun
+recorded=2026-07-17 15:39:58 +0800
+
+== spectre-v1-priv-kmhv2 ==
+poc=spectre-v1-priv-kmhv2
+run_id=20260717-sv48-longrun
+outer_timeout=45m
+inner_timeout=30m
+exit_code=124
+recorded=2026-07-17 14:14:34 +0800
+log_bytes=953
+last_result_lines:
+[v1-priv] model=sv48-pte-u-isolation attacker=U victim=M isolation=Sv48-PTE-U0 secret=PTE_U0 pmp=permissive-not-boundary satp=sv48 service=machine-ecall secret_sz=6 candidates=62 flush_lines=256 control_only=0
+[v1-priv] calibration fallback=70 measured=85 threshold=85 fixed=0
+[v1-priv] control service_return=no-secret direct_secret_access=expect-fault
+[v1-priv] b_array1=0000000080007000 b_secret=0000000080007050 malicious_base=80 probe=0000000080008000
+
+== spectre-v1-asid-kmhv2 ==
+poc=spectre-v1-asid-kmhv2
+run_id=20260717-sv48-longrun
+outer_timeout=45m
+inner_timeout=30m
+exit_code=124
+recorded=2026-07-17 14:45:31 +0800
+log_bytes=1144
+last_result_lines:
+[v1-asid-priv] model=sv48-asid-process-isolation attacker=U victim=U service=machine-scheduler attacker_asid=17 victim_asid=23 normalized_attacker_asid=17 normalized_victim_asid=23 fence_on_switch=0 baseline_subtract=0 filter_known_noise=1 secret_sz=6 candidates=62 flush_lines=256 control_only=0
+[v1-asid-priv] secret_offset=0
+[v1-asid-priv] calibration fallback=50 measured=85 threshold=50 fixed=1
+[v1-asid-priv] isolation attacker_direct_victim_secret=expect-fault shared_probe=mapped-both victim_data=mapped-victim-only
+[v1-asid-priv] victim_array1=0000000080018000 victim_secret=0000000080018050 malicious_base=80 probe=0000000080013000
+
+== spectre-v1-vmid-kmhv2 ==
+poc=spectre-v1-vmid-kmhv2
+run_id=20260717-sv48-longrun
+outer_timeout=45m
+inner_timeout=30m
+exit_code=124
+recorded=2026-07-17 15:18:14 +0800
+log_bytes=1149
+last_result_lines:
+[v1-vmid-priv] model=sv48-vmid-vu-isolation attacker=VU victim=VU service=machine-hypervisor-scheduler attacker_vmid=17 victim_vmid=23 normalized_attacker_vmid=17 normalized_victim_vmid=23 fence_on_switch=0 filter_known_noise=1 secret_sz=6 candidates=62 flush_lines=256 control_only=0
+[v1-vmid-priv] secret_offset=0
+[v1-vmid-priv] calibration fallback=50 measured=85 threshold=50 fixed=1
+[v1-vmid-priv] isolation attacker_direct_victim_secret=expect-fault shared_probe=mapped-both victim_data=mapped-victim-vm-only hgatp_vmid=on
+[v1-vmid-priv] victim_array1=0000000080018000 victim_secret=0000000080018050 malicious_base=80 probe=0000000080013000
+
+== spectre-v2-privilege-kmhv2 ==
+poc=spectre-v2-privilege-kmhv2
+run_id=20260717-sv48-longrun
+outer_timeout=45m
+inner_timeout=20m
+exit_code=124
+recorded=2026-07-17 15:39:43 +0800
+log_bytes=1124
+last_result_lines:
+[v2-privilege] model=sv48-pte-u-isolation attacker=U victim=M isolation=Sv48-PTE-U0 secret=PTE_U0 pmp=permissive-not-boundary satp=sv48 service=machine-ecall round=asm-single-site fixed_marker=-1 secret_offset=0 secret_sz=6 candidates=62 tries=8 train=16 warmup=0 extra_flush=0 asm_control=0 probe_control=0 probe_mix=1 early_strict=0 asm_style=0
+[v2-privilege] calibration fallback=60 measured=93 threshold=60 fixed=1
+[v2-privilege] control service_return=no-secret direct_secret_access=expect-fault
+[v2-privilege] secret=0000000080007000 channel=0000000080008000 gadget=0000000080000C5A safe_target=0000000080000CBC
+

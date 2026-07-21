@@ -1,0 +1,10 @@
+schema_version=POC-RP-1.0
+profile=sv39
+processor=kmhv2
+vm_mode=sv39
+emu_relpath=runtime/kmhv2-emu/emu
+emu_sha256=6ffccdb29be51b34133ed736075ca6a97cd006ead5ecb4dded599c06f7e67903
+emu_build_id=1481083d32d093176a1ac671e10b42872c87d007
+constantin_mode=embedded
+constantin_relpath=null
+source_of_runtime=materialized profile copy; source_absolute_path is recorded only in profile manifest provenance

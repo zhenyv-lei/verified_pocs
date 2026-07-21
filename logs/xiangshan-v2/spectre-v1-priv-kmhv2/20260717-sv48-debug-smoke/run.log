@@ -1,0 +1,28 @@
+emu compiled at Jul 16 2026, 15:50:09
+[INFO] init for constantin: loaded from init.
+Using simulated 32768B flash
+Core  0's Commit SHA is: 2acbf327cf, dirty: 0
+Using simulated 8386560MB RAM
+The image is xiangshan-v2/spectre-v1-priv-kmhv2/code/build/spectre-v1-priv-riscv64-xs.elf
+ELF file detected and loading image from extracted elf file
+Loading 23424 bytes at address 0x80000000 at offset 0x0
+Loading 229400 bytes at address 0x80006000 at offset 0x6000
+[v1-priv] model=sv48-pte-u-isolation attacker=U victim=M isolation=Sv48-PTE-U0 secret=PTE_U0 pmp=permissive-not-boundary satp=sv48 service=machine-ecall secret_sz=6 candidates=62 flush_lines=8 control_only=0
+[v1-priv] calibration fallback=70 measured=85 threshold=85 fixed=0
+[v1-priv] control service_return=no-secret direct_secret_access=expect-fault
+[v1-priv] b_array1=0000000080006000 b_secret=0000000080006050 malicious_base=80 probe=0000000080007000
+[v1-priv-debug] enter_user_attacker begin
+[v1-priv-debug] init_pmp done
+[v1-priv-debug] mret target=00000000800012F4 sp=000000008000BFF0 mstatus=8000000A00006000
+[v1-priv] isolation U-direct-secret-read fault_seen=0 completed=0 value=0x00 expected=fault u_text=[0000000080001000,0000000080002000) m_secret=0000000080006050
+[v1-priv] traps=1 victim_calls=0 flush_calls=0 exit_calls=0 bad_traps=0 last_mcause=8 last_mepc=00000000800012F8 status=0
+[v1-priv] byte 0: expected=S(0x53) guess=?(0x00) score=0 second=?(0x00) score=0
+[v1-priv] byte 0 rounds=0 early_stop=1 min_score=1 gap=1
+[v1-priv] byte 1: expected=3(0x33) guess=?(0x00) score=0 second=?(0x00) score=0
+[v1-priv] byte 1 rounds=0 early_stop=1 min_score=1 gap=1
+[v1-priv] byte 2: expected=C(0x43) guess=?(0x00) score=0 second=?(0x00) score=0
+[v1-priv] byte 2 rounds=0 early_stop=1 min_score=1 gap=1
+[v1-priv] byte 3: expected=r(0x72) guess=?(0x00) score=0 second=?(0x00) score=0
+[v1-priv] byte 3 rounds=0 early_stop=1 min_score=1 gap=1
+[v1-priv] byte 4: expected=e(0x65) guess=?(0x00) score=0 second=?(0x00) score=0
+[v1-priv] byte 4 rounds=0 early_stop=

@@ -1,0 +1,2 @@
+build_clean_elapsed=0:00.05 exit=0
+build_elapsed=0:00.39 exit=0

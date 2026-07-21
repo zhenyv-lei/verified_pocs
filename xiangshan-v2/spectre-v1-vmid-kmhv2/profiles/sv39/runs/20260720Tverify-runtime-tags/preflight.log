@@ -1,0 +1,34 @@
+[profile-runner] stage=preflight
+[profile-runner] profile=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-vmid-kmhv2/profiles/sv39
+[profile-runner] processor=xiangshan-v2
+[profile-runner] poc_id=spectre-v1-vmid-kmhv2
+[profile-runner] vm_mode=sv39
+[profile-runner] run_id=20260720Tverify-runtime-tags
+[profile-runner] am_home=/nfs/home/leizhenyu/opt/testbench/.local/nexus-am-kmhv2
+[profile-runner] emu=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-vmid-kmhv2/profiles/sv39/runtime/kmhv2-emu/emu
+[profile-runner] emu_runtime_dir=kmhv2-emu
+[profile-runner] emu_candidate_id=kmhv2-emu-16threads
+[profile-runner] emu_sha256=6ffccdb29be51b34133ed736075ca6a97cd006ead5ecb4dded599c06f7e67903
+[profile-runner] arch=riscv64-xs
+[profile-runner] march=rv64gch_zba_zbb_zbc_zbs_zbkb_zbkc_zbkx_zknd_zkne_zknh_zkr_zksed_zksh_zkt_zicbom_zicboz
+[profile-runner] cppflags=-DSECRET_SZ=6 -DSECRET_OFFSET=0 -DATTACK_SAME_ROUNDS=5 -DTRAIN_TIMES=10 -DUSE_FIXED_CACHE_HIT_THRESHOLD=1 -DCACHE_HIT_THRESHOLD=50 -DFILTER_KNOWN_NOISE=1 -DFULL_BYTE_PROBE=0 -DPROBE_CANDIDATES=62 -DEARLY_STOP=1 -DEARLY_STOP_MIN_SCORE=3 -DEARLY_STOP_GAP=2 -DATTACKER_VMID=17 -DVICTIM_VMID=23 -DFENCE_ON_VMID_SWITCH=0
+[profile-runner] parser_kind=v1-vmid-priv
+[profile-runner] expected_secret_len=6
+[profile-runner] constantin_mode=embedded
+[profile-runner] seed=0
+[profile-runner] stack_kb=32768
+[profile-runner] wall_timeout=30m
+profile=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-vmid-kmhv2/profiles/sv39
+source_tree_sha256=00dac3baef52fa86f302aeac2b58bd490617b5df61815dfe6046ab76ee10dc7e
+emu=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-vmid-kmhv2/profiles/sv39/runtime/kmhv2-emu/emu
+	linux-vdso.so.1 (0x0000708880330000)
+	libsqlite3.so.0 => /lib/x86_64-linux-gnu/libsqlite3.so.0 (0x000070887a938000)
+	libz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x000070887a91c000)
+	libzstd.so.1 => /lib/x86_64-linux-gnu/libzstd.so.1 (0x000070887a862000)
+	libatomic.so.1 => /lib/x86_64-linux-gnu/libatomic.so.1 (0x000070887a857000)
+	libstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x000070887a400000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x000070887a76c000)
+	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x000070887a73e000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x000070887a000000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000708880332000)
+PACKAGE_AND_RUNTIME_PREFLIGHT_PASS

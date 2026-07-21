@@ -1,0 +1,10 @@
+emu compiled at Jul 16 2026, 15:50:09
+[INFO] init for constantin: loaded from init.
+Using simulated 32768B flash
+Core  0's Commit SHA is: 2acbf327cf, dirty: 0
+Using simulated 8386560MB RAM
+The image is xiangshan-v2/spectre-v1-priv-kmhv2/code/build/spectre-v1-priv-riscv64-xs.elf
+ELF file detected and loading image from extracted elf file
+Loading 23416 bytes at address 0x80000000 at offset 0x0
+Loading 229400 bytes at address 0x80006000 at offset 0x6000
+[v1-priv] model=sv48-pte-u-isolation attacker=U victim=M isolation=Sv48-PTE-U0 secret=PTE_U0 pmp=permissive-not-boundary satp=sv48 service=machine-ecall 

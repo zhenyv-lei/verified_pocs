@@ -1,0 +1,39 @@
+[profile-runner] stage=build
+[profile-runner] profile=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v3/spectre-v1-poc-kmhv3/profiles/bare
+[profile-runner] processor=xiangshan-v3
+[profile-runner] poc_id=spectre-v1-poc-kmhv3
+[profile-runner] vm_mode=bare
+[profile-runner] run_id=20260720T085151Z
+[profile-runner] am_home=/nfs/home/leizhenyu/opt/DUTs/XiangShan-V3/third_party/nexus-am
+[profile-runner] emu=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v3/spectre-v1-poc-kmhv3/profiles/bare/runtime/kmhv3-emu/emu
+[profile-runner] emu_runtime_dir=kmhv3-emu
+[profile-runner] emu_candidate_id=kmhv3-emu-v2-baseline
+[profile-runner] emu_sha256=7886cdf6081378bfcd84fb9397cd192f19c499ca607fb8b403f91b47c5c88bd1
+[profile-runner] arch=riscv64-xs-flash
+[profile-runner] march=rv64gc_zba_zbb_zbc_zbs_zbkb_zbkc_zbkx_zknd_zkne_zknh_zkr_zksed_zksh_zkt_zicbom_zicboz
+[profile-runner] cppflags=-DCACHE_HIT_THRESHOLD=80 -DUSE_FIXED_CACHE_HIT_THRESHOLD=1 -DSECRET_SZ=6 -DATTACK_SAME_ROUNDS=3 -DTRAIN_TIMES=6 -DFLUSH_CANDIDATE_LINES_ONLY=1 -DFLUSH_LINES=256
+[profile-runner] parser_kind=v1_basic
+[profile-runner] expected_secret_len=6
+[profile-runner] constantin_mode=required
+[profile-runner] seed=0
+[profile-runner] stack_kb=32768
+[profile-runner] wall_timeout=40m
+make -C /tmp/verified-poc/xiangshan-v3/spectre-v1-poc-kmhv3/bare/20260720T085151Z/source clean AM_HOME=/nfs/home/leizhenyu/opt/DUTs/XiangShan-V3/third_party/nexus-am ARCH=riscv64-xs-flash
+make -C /tmp/verified-poc/xiangshan-v3/spectre-v1-poc-kmhv3/bare/20260720T085151Z/source AM_HOME=/nfs/home/leizhenyu/opt/DUTs/XiangShan-V3/third_party/nexus-am ARCH=riscv64-xs-flash LINUX_GNU_TOOLCHAIN=1 MARCH=rv64gc_zba_zbb_zbc_zbs_zbkb_zbkc_zbkx_zknd_zkne_zknh_zkr_zksed_zksh_zkt_zicbom_zicboz CC_OPT= CPPFLAGS=-DCACHE_HIT_THRESHOLD=80\ -DUSE_FIXED_CACHE_HIT_THRESHOLD=1\ -DSECRET_SZ=6\ -DATTACK_SAME_ROUNDS=3\ -DTRAIN_TIMES=6\ -DFLUSH_CANDIDATE_LINES_ONLY=1\ -DFLUSH_LINES=256 -j8
+make: Entering directory '/tmp/verified-poc/xiangshan-v3/spectre-v1-poc-kmhv3/bare/20260720T085151Z/source'
+# Building spectre-v1 [riscv64-xs-flash] with AM_HOME {/nfs/home/leizhenyu/opt/DUTs/XiangShan-V3/third_party/nexus-am}
+make[1]: Entering directory '/nfs/home/leizhenyu/opt/DUTs/XiangShan-V3/third_party/nexus-am'
++ CC src/spectre-v1.c
+make[1]: Entering directory '/nfs/home/leizhenyu/opt/DUTs/XiangShan-V3/third_party/nexus-am/libs/klib'
+# Building lib-klib [riscv64-xs-flash]
+make[1]: Leaving directory '/nfs/home/leizhenyu/opt/DUTs/XiangShan-V3/third_party/nexus-am/libs/klib'
+make[2]: Entering directory '/nfs/home/leizhenyu/opt/DUTs/XiangShan-V3/third_party/nexus-am/am'
+# Building lib-am [riscv64-xs-flash]
++ AS src/nemu/common/mainargs.S
++ AR -> build/am-riscv64-xs-flash.a
+make[2]: Leaving directory '/nfs/home/leizhenyu/opt/DUTs/XiangShan-V3/third_party/nexus-am/am'
+make[1]: Leaving directory '/nfs/home/leizhenyu/opt/DUTs/XiangShan-V3/third_party/nexus-am'
+# Creating binary image [riscv64-xs-flash]
++ LD -> build/spectre-v1-riscv64-xs-flash.elf
++ OBJCOPY -> build/spectre-v1-riscv64-xs-flash.bin
+make: Leaving directory '/tmp/verified-poc/xiangshan-v3/spectre-v1-poc-kmhv3/bare/20260720T085151Z/source'

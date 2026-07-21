@@ -1,0 +1,2 @@
+elapsed=0:00.04 exit=0
+elapsed=0:00.42 exit=0

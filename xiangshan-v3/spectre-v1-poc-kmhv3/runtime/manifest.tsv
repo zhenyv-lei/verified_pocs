@@ -1,0 +1,12 @@
+schema_version=POC-RP-1.0
+poc=xiangshan-v3/spectre-v1-poc-kmhv3
+processor=kmhv3
+emu_source=/nfs/home/leizhenyu/opt/DUTs/XiangShan-V3/build/emu
+emu_relpath=runtime/kmhv3-emu/emu
+emu_sha256=7886cdf6081378bfcd84fb9397cd192f19c499ca607fb8b403f91b47c5c88bd1
+emu_build_id=761c266eee6ae2e7dc5ab7d930081e63a92a6b68
+emu_compile_banner=emu compiled at Jul 13 2026, 16:51:03
+constantin_mode=required
+constantin_relpath=runtime/noop-home/build/constantin.txt
+constantin_sha256=24d63281992fab97959d385b91d1356261acb0a8da3b4737cf42ce8a37db46bd
+dts_sha256=2e9a1d6df70e4c87aa29da3f3e9911a42d4d336370bb891af4caf6a17f010924

@@ -1,0 +1,43 @@
+{
+  "status": "ASSERTION_PASS",
+  "parser_kind": "v1_basic",
+  "expected_secret": "S3CreT",
+  "observed_expected": "S3CreT",
+  "observed_guess": "S3CreT",
+  "rows": [
+    {
+      "index": 0,
+      "expected": "S",
+      "guess": "S"
+    },
+    {
+      "index": 1,
+      "expected": "3",
+      "guess": "3"
+    },
+    {
+      "index": 2,
+      "expected": "C",
+      "guess": "C"
+    },
+    {
+      "index": 3,
+      "expected": "r",
+      "guess": "r"
+    },
+    {
+      "index": 4,
+      "expected": "e",
+      "guess": "e"
+    },
+    {
+      "index": 5,
+      "expected": "T",
+      "guess": "T"
+    }
+  ],
+  "row_count": 6,
+  "isolation_ok": true,
+  "check_pass": true,
+  "log": "/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v3/spectre-v1-poc-kmhv3/profiles/bare/runs/20260720Tcanonical-v3poc-kmhv3-bare/run.log"
+}

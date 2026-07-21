@@ -1,0 +1,14 @@
+profile=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v3/spectre-v1-poc-kmhv3/profiles/bare
+source_tree_sha256=20d465369e6cc5e868cc7c8dfc3d939ed084eee1a7cc8208d29cf248ec720de6
+emu=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v3/spectre-v1-poc-kmhv3/profiles/bare/runtime/emu/emu
+	linux-vdso.so.1 (0x0000793a86e46000)
+	libsqlite3.so.0 => /lib/x86_64-linux-gnu/libsqlite3.so.0 (0x0000793a7f79c000)
+	libz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x0000793a7f780000)
+	libzstd.so.1 => /lib/x86_64-linux-gnu/libzstd.so.1 (0x0000793a7f6c6000)
+	libatomic.so.1 => /lib/x86_64-linux-gnu/libatomic.so.1 (0x0000793a7f6bb000)
+	libstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x0000793a7f400000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x0000793a7f317000)
+	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x0000793a7f68b000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x0000793a7f000000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000793a86e48000)
+PACKAGE_AND_RUNTIME_PREFLIGHT_PASS

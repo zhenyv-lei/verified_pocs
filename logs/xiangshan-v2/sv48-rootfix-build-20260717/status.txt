@@ -1,0 +1,4 @@
+v1-priv=0
+v2-priv=0
+v1-asid=0
+v1-vmid=0

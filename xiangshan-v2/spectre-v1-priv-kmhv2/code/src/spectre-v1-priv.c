@@ -82,6 +82,10 @@
 #define DEBUG_TRAMPOLINE 0
 #endif
 
+#ifndef DEBUG_TRAP_PROGRESS
+#define DEBUG_TRAP_PROGRESS 0
+#endif
+
 #ifndef STRICT_PAGE_TABLE_DEMO
 #define STRICT_PAGE_TABLE_DEMO 1
 #endif
@@ -471,6 +475,14 @@ void m_trap_dispatch(uint64_t cause, uint64_t epc,
   last_mcause = cause;
   last_mepc = epc;
 
+#if DEBUG_TRAP_PROGRESS
+  if (trap_count <= 16 || ((trap_count & 0x3f) == 0)) {
+    printf("[v1-priv-debug] trap=%lu cause=%lu epc=%p a7=%lu a0=%p a1=%p done=%d status=%d\n",
+           trap_count, cause, (void *)epc, a7, (void *)a0, (void *)a1,
+           attack_done, attack_status);
+  }
+#endif
+
 #if TRAP_SMOKE_EXIT
   attack_status = 0;
   attack_done = 1;
@@ -750,6 +762,9 @@ static void enter_user_attacker(void)
       "mret\n"
       ".globl machine_low_return\n"
       "machine_low_return:\n"
+      "csrw satp, zero\n"
+      "sfence.vma zero, zero\n"
+      "fence.i\n"
       "la t0, saved_m_sp\n"
       "ld sp, 0(t0)\n"
       :

@@ -901,6 +901,9 @@ static void enter_attacker_process(void)
       "mret\n"
       ".globl machine_low_return\n"
       "machine_low_return:\n"
+      "csrw satp, zero\n"
+      "sfence.vma zero, zero\n"
+      "fence.i\n"
       "la t0, saved_main_m_sp\n"
       "ld sp, 0(t0)\n"
       :

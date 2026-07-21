@@ -1,0 +1,63 @@
+[profile-runner] stage=run
+[profile-runner] profile=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v2-privilege-kmhv2/profiles/sv39
+[profile-runner] processor=xiangshan-v2
+[profile-runner] poc_id=spectre-v2-privilege-kmhv2
+[profile-runner] vm_mode=sv39
+[profile-runner] run_id=20260720Tcanonical-v2priv-kmhv2-sv39
+[profile-runner] am_home=/nfs/home/leizhenyu/opt/verified_poc/.scratch/nexus-am-kmhv2
+[profile-runner] emu=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v2-privilege-kmhv2/profiles/sv39/runtime/kmhv2-emu/emu
+[profile-runner] emu_runtime_dir=kmhv2-emu
+[profile-runner] emu_candidate_id=kmhv2-emu-16threads
+[profile-runner] emu_sha256=6ffccdb29be51b34133ed736075ca6a97cd006ead5ecb4dded599c06f7e67903
+[profile-runner] arch=riscv64-xs
+[profile-runner] march=rv64gc_zba_zbb_zbc_zbs_zbkb_zbkc_zbkx_zknd_zkne_zknh_zkr_zksed_zksh_zkt_zicbom_zicboz
+[profile-runner] cppflags=-DCACHE_HIT_THRESHOLD=70 -DUSE_FIXED_CACHE_HIT_THRESHOLD=1 -DSECRET_SZ=6 -DSECRET_OFFSET=0 -DV2_ATTACK_TRIES=8 -DV2_TRAINING_LOOPS=16 -DPROBE_CANDIDATES=62 -DFULL_BYTE_PROBE=0 -DEARLY_STOP=1 -DEARLY_STOP_MIN_SCORE=2 -DEARLY_STOP_GAP=1 -DV2_EARLY_STOP_STRICT=0 -DV2_PROBE_MIX=1 -DSTRICT_PAGE_TABLE_DEMO=1 -DATTACKER_MPP=0 -DDIRECT_SERVICE_CALL=0 -DUSE_AM_CTE=0 -DV2_ASM_ROUND=1 -DV2_FIXED_MARKER=-1 -DV2_BYTE_WARMUP_ROUNDS=0 -DV2_ASM_CONTROL_ROUND=0 -DV2_PROBE_CONTROL_ROUND=0 -DV2_ASM_STYLE=0
+[profile-runner] parser_kind=v2_priv
+[profile-runner] expected_secret_len=6
+[profile-runner] constantin_mode=embedded
+[profile-runner] seed=0
+[profile-runner] stack_kb=32768
+[profile-runner] wall_timeout=20m
+NOOP_HOME=embedded-default-not-overridden
+ulimit -s 32768
+timeout 20m /nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v2-privilege-kmhv2/profiles/sv39/runtime/kmhv2-emu/emu --no-diff --seed=0 -i /nfs/home/leizhenyu/opt/verified_poc/.scratch/xiangshan-v2/spectre-v2-privilege-kmhv2/sv39/20260720Tcanonical-v2priv-kmhv2-sv39/image
+emu compiled at Jun 29 2026, 18:08:52
+Using seed = 0
+[INFO] init for constantin: loaded from init.
+Using simulated 32768B flash
+Core  0's Commit SHA is: 2acbf327cf, dirty: 0
+Using simulated 8386560MB RAM
+The image is /nfs/home/leizhenyu/opt/verified_poc/.scratch/xiangshan-v2/spectre-v2-privilege-kmhv2/sv39/20260720Tcanonical-v2priv-kmhv2-sv39/image
+ELF file detected and loading image from extracted elf file
+Loading 29536 bytes at address 0x80000000 at offset 0x0
+Loading 245776 bytes at address 0x80008000 at offset 0x8000
+[v2-privilege] model=sv39-pte-u-isolation attacker=U victim=M isolation=Sv39-PTE-U0 secret=PTE_U0 pmp=permissive-not-boundary satp=sv39 service=machine-ecall round=asm-single-site fixed_marker=-1 secret_offset=0 secret_sz=6 candidates=62 tries=8 train=16 warmup=0 asm_control=0 probe_control=0 probe_mix=1 early_strict=0 asm_style=0
+[v2-privilege] calibration fallback=70 measured=93 threshold=70 fixed=1
+[v2-privilege] control service_return=no-secret direct_secret_access=expect-fault
+[v2-privilege] secret=0000000080008000 channel=0000000080009000 gadget=0000000080000B6C safe_target=0000000080000BCE
+[v2-privilege] isolation U-direct-secret-read fault_seen=1 completed=0 value=0x00 expected=fault u_text=[0000000080002000,0000000080003000) m_secret=0000000080008000
+[v2-privilege] traps=44 train_calls=0 attack_calls=0 asm_round_calls=42 flush_calls=0 exit_calls=1 bad_traps=0 last_mcause=8 last_mepc=0000000080002440 status=0
+[v2-privilege] byte 0: expected=S(0x53) expected_score=2 guess=S(0x53) score=2 second=7(0x37) score=1
+[v2-privilege] byte 0 tries=2 early_stop=1 min_score=2 gap=1
+[v2-privilege] byte 0 top4=S(0x53):2,7(0x37):1,8(0x38):1,9(0x39):1
+[v2-privilege] byte 1: expected=3(0x33) expected_score=1 guess=3(0x33) score=1 second=6(0x36) score=1
+[v2-privilege] byte 1 tries=8 early_stop=1 min_score=2 gap=1
+[v2-privilege] byte 1 top4=3(0x33):1,6(0x36):1,7(0x37):1,8(0x38):1
+[v2-privilege] byte 2: expected=C(0x43) expected_score=8 guess=1(0x31) score=8 second=2(0x32) score=8
+[v2-privilege] byte 2 tries=8 early_stop=1 min_score=2 gap=1
+[v2-privilege] byte 2 top4=1(0x31):8,2(0x32):8,3(0x33):8,4(0x34):8
+[v2-privilege] byte 3: expected=r(0x72) expected_score=0 guess=D(0x44) score=8 second=O(0x4f) score=8
+[v2-privilege] byte 3 tries=8 early_stop=1 min_score=2 gap=1
+[v2-privilege] byte 3 top4=D(0x44):8,O(0x4f):8,f(0x66):8,q(0x71):8
+[v2-privilege] byte 4: expected=e(0x65) expected_score=4 guess=D(0x44) score=8 second=O(0x4f) score=8
+[v2-privilege] byte 4 tries=8 early_stop=1 min_score=2 gap=1
+[v2-privilege] byte 4 top4=D(0x44):8,O(0x4f):8,f(0x66):8,p(0x70):8
+[v2-privilege] byte 5: expected=T(0x54) expected_score=7 guess=C(0x43) score=8 second=D(0x44) score=8
+[v2-privilege] byte 5 tries=8 early_stop=1 min_score=2 gap=1
+[v2-privilege] byte 5 top4=C(0x43):8,D(0x44):8,N(0x4e):8,O(0x4f):8
+[v2-privilege] check=FAIL
+Core 0: [32mHIT GOOD TRAP at pc = 0x0
+[0m[35mCore-0 instrCnt = 1,703,070, cycleCnt = 2,589,160, IPC = 0.657769
+[0m[34mSeed=0 Guest cycle spent: 2,589,190 (this will be different from cycleCnt if emu loads a snapshot)
+[0m[34mHost time spent: 833,730ms
+[0m

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+export LC_ALL=C TZ=UTC HOME=/tmp/verified-poc/xiangshan-v2/spectre-v1-vmid-kmhv2/sv48/20260720Tupdate-v1vmid-kmhv2-sv48/home TMPDIR=/tmp/verified-poc/xiangshan-v2/spectre-v1-vmid-kmhv2/sv48/20260720Tupdate-v1vmid-kmhv2-sv48/tmp
+make -C /tmp/verified-poc/xiangshan-v2/spectre-v1-vmid-kmhv2/sv48/20260720Tupdate-v1vmid-kmhv2-sv48/source clean AM_HOME=/nfs/home/leizhenyu/opt/testbench/.local/nexus-am-kmhv2 ARCH=riscv64-xs
+make -C /tmp/verified-poc/xiangshan-v2/spectre-v1-vmid-kmhv2/sv48/20260720Tupdate-v1vmid-kmhv2-sv48/source AM_HOME=/nfs/home/leizhenyu/opt/testbench/.local/nexus-am-kmhv2 ARCH=riscv64-xs LINUX_GNU_TOOLCHAIN=1 MARCH=rv64gch_zba_zbb_zbc_zbs_zbkb_zbkc_zbkx_zknd_zkne_zknh_zkr_zksed_zksh_zkt_zicbom_zicboz CC_OPT= CPPFLAGS=-DSECRET_SZ=6\ -DSECRET_OFFSET=0\ -DATTACK_SAME_ROUNDS=5\ -DTRAIN_TIMES=10\ -DUSE_FIXED_CACHE_HIT_THRESHOLD=1\ -DCACHE_HIT_THRESHOLD=50\ -DFILTER_KNOWN_NOISE=1\ -DFULL_BYTE_PROBE=0\ -DPROBE_CANDIDATES=62\ -DEARLY_STOP=1\ -DEARLY_STOP_MIN_SCORE=3\ -DEARLY_STOP_GAP=2\ -DATTACKER_VMID=17\ -DVICTIM_VMID=23\ -DFENCE_ON_VMID_SWITCH=0 -j8
+ulimit -s 32768
+timeout 30m /nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-vmid-kmhv2/profiles/sv48/runtime/kmhv2-emu/emu --no-diff --seed=0 -i /tmp/verified-poc/xiangshan-v2/spectre-v1-vmid-kmhv2/sv48/20260720Tupdate-v1vmid-kmhv2-sv48/image
+python3 /nfs/home/leizhenyu/opt/verified_poc/tools/parse_profile_log.py v1-vmid-priv S3CreT /nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-vmid-kmhv2/profiles/sv48/runs/20260720Tupdate-v1vmid-kmhv2-sv48/run.log /nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v1-vmid-kmhv2/profiles/sv48/runs/20260720Tupdate-v1vmid-kmhv2-sv48/result.json
+# source image before copy: /tmp/verified-poc/xiangshan-v2/spectre-v1-vmid-kmhv2/sv48/20260720Tupdate-v1vmid-kmhv2-sv48/source/build/spectre-v1-vmid-priv-riscv64-xs.elf

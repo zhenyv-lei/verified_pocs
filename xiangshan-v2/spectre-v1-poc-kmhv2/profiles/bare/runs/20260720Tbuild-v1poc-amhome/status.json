@@ -1,0 +1,21 @@
+{
+  "run_id": "20260720Tbuild-v1poc-amhome",
+  "processor": "xiangshan-v2",
+  "poc_id": "spectre-v1-poc-kmhv2",
+  "vm_mode": "bare",
+  "status": "ASSERTION_PASS",
+  "verify_exit": 0,
+  "build_exit": 0,
+  "run_exit": 0,
+  "parse_exit": 0,
+  "timeout": false,
+  "signal": 0,
+  "started_at": "2026-07-20T05:30:59Z",
+  "finished_at": "2026-07-20T05:37:10Z",
+  "elapsed_sec": 371,
+  "seed": 0,
+  "max_cycles": null,
+  "emu_candidate_id": "kmhv2-emu-16threads",
+  "emu_sha256": "6ffccdb29be51b34133ed736075ca6a97cd006ead5ecb4dded599c06f7e67903",
+  "scratch": "/tmp/verified-poc/xiangshan-v2/spectre-v1-poc-kmhv2/bare/20260720Tbuild-v1poc-amhome"
+}

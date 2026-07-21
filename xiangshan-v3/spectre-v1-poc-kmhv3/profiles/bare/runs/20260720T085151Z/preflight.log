@@ -1,0 +1,34 @@
+[profile-runner] stage=preflight
+[profile-runner] profile=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v3/spectre-v1-poc-kmhv3/profiles/bare
+[profile-runner] processor=xiangshan-v3
+[profile-runner] poc_id=spectre-v1-poc-kmhv3
+[profile-runner] vm_mode=bare
+[profile-runner] run_id=20260720T085151Z
+[profile-runner] am_home=/nfs/home/leizhenyu/opt/DUTs/XiangShan-V3/third_party/nexus-am
+[profile-runner] emu=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v3/spectre-v1-poc-kmhv3/profiles/bare/runtime/kmhv3-emu/emu
+[profile-runner] emu_runtime_dir=kmhv3-emu
+[profile-runner] emu_candidate_id=kmhv3-emu-v2-baseline
+[profile-runner] emu_sha256=7886cdf6081378bfcd84fb9397cd192f19c499ca607fb8b403f91b47c5c88bd1
+[profile-runner] arch=riscv64-xs-flash
+[profile-runner] march=rv64gc_zba_zbb_zbc_zbs_zbkb_zbkc_zbkx_zknd_zkne_zknh_zkr_zksed_zksh_zkt_zicbom_zicboz
+[profile-runner] cppflags=-DCACHE_HIT_THRESHOLD=80 -DUSE_FIXED_CACHE_HIT_THRESHOLD=1 -DSECRET_SZ=6 -DATTACK_SAME_ROUNDS=3 -DTRAIN_TIMES=6 -DFLUSH_CANDIDATE_LINES_ONLY=1 -DFLUSH_LINES=256
+[profile-runner] parser_kind=v1_basic
+[profile-runner] expected_secret_len=6
+[profile-runner] constantin_mode=required
+[profile-runner] seed=0
+[profile-runner] stack_kb=32768
+[profile-runner] wall_timeout=40m
+profile=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v3/spectre-v1-poc-kmhv3/profiles/bare
+source_tree_sha256=20d465369e6cc5e868cc7c8dfc3d939ed084eee1a7cc8208d29cf248ec720de6
+emu=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v3/spectre-v1-poc-kmhv3/profiles/bare/runtime/kmhv3-emu/emu
+	linux-vdso.so.1 (0x00007aa9dcbbe000)
+	libsqlite3.so.0 => /lib/x86_64-linux-gnu/libsqlite3.so.0 (0x00007aa9d5514000)
+	libz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x00007aa9d54f8000)
+	libzstd.so.1 => /lib/x86_64-linux-gnu/libzstd.so.1 (0x00007aa9d543e000)
+	libatomic.so.1 => /lib/x86_64-linux-gnu/libatomic.so.1 (0x00007aa9d5433000)
+	libstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007aa9d5000000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007aa9d5348000)
+	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007aa9d531a000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007aa9d4c00000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007aa9dcbc0000)
+PACKAGE_AND_RUNTIME_PREFLIGHT_PASS

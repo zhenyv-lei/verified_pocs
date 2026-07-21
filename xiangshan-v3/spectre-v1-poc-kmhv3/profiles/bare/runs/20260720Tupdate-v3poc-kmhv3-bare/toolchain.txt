@@ -1,0 +1,5 @@
+image=/tmp/verified-poc/xiangshan-v3/spectre-v1-poc-kmhv3/bare/20260720Tupdate-v3poc-kmhv3-bare/image
+/usr/bin/make
+GNU Make 4.3
+/usr/bin/riscv64-linux-gnu-gcc
+92b36da17ef88af3de6ab25029452c858c7174f0

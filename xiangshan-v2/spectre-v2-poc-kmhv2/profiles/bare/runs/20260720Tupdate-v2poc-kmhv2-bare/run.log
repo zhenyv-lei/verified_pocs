@@ -1,0 +1,57 @@
+[profile-runner] stage=run
+[profile-runner] profile=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v2-poc-kmhv2/profiles/bare
+[profile-runner] processor=xiangshan-v2
+[profile-runner] poc_id=spectre-v2-poc-kmhv2
+[profile-runner] vm_mode=bare
+[profile-runner] run_id=20260720Tupdate-v2poc-kmhv2-bare
+[profile-runner] am_home=/nfs/home/leizhenyu/opt/testbench/.local/nexus-am-kmhv2
+[profile-runner] emu=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v2-poc-kmhv2/profiles/bare/runtime/kmhv2-emu/emu
+[profile-runner] emu_runtime_dir=kmhv2-emu
+[profile-runner] emu_candidate_id=kmhv2-emu-16threads
+[profile-runner] emu_sha256=6ffccdb29be51b34133ed736075ca6a97cd006ead5ecb4dded599c06f7e67903
+[profile-runner] arch=riscv64-xs
+[profile-runner] march=rv64gc_zba_zbb_zbc_zbs_zbkb_zbkc_zbkx_zknd_zkne_zknh_zkr_zksed_zksh_zkt_zicbom_zicboz
+[profile-runner] cppflags=-DSECRET_SZ=6 -DV2_ATTACK_TRIES=2 -DV2_TRAINING_LOOPS=16
+[profile-runner] parser_kind=v2_basic
+[profile-runner] expected_secret_len=6
+[profile-runner] constantin_mode=embedded
+[profile-runner] seed=0
+[profile-runner] stack_kb=32768
+[profile-runner] wall_timeout=30m
+NOOP_HOME=embedded-default-not-overridden
+ulimit -s 32768
+timeout 30m /nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v2-poc-kmhv2/profiles/bare/runtime/kmhv2-emu/emu --no-diff --seed=0 -i /tmp/verified-poc/xiangshan-v2/spectre-v2-poc-kmhv2/bare/20260720Tupdate-v2poc-kmhv2-bare/image
+emu compiled at Jun 29 2026, 18:08:52
+Using seed = 0
+[INFO] init for constantin: loaded from init.
+Using simulated 32768B flash
+Core  0's Commit SHA is: 2acbf327cf, dirty: 0
+Using simulated 8386560MB RAM
+The image is /tmp/verified-poc/xiangshan-v2/spectre-v2-poc-kmhv2/bare/20260720Tupdate-v2poc-kmhv2-bare/image
+ELF file detected and loading image from extracted elf file
+Loading 28680 bytes at address 0x80000000 at offset 0x0
+[v2] calibration fallback=70 measured=95 threshold=95 fixed=0
+[v2] reading 6 bytes
+[v2] byte  0: S (0x53) score=2
+[v2] expected: S (0x53) second=p (0x70) score=2
+[v2] check 0 0x53 0x53
+[v2] byte  1: 3 (0x33) score=2
+[v2] expected: 3 (0x33) second=0 (0x30) score=1
+[v2] check 1 0x33 0x33
+[v2] byte  2: C (0x43) score=2
+[v2] expected: C (0x43) second=3 (0x33) score=0
+[v2] check 2 0x43 0x43
+[v2] byte  3: r (0x72) score=2
+[v2] expected: r (0x72) second=C (0x43) score=0
+[v2] check 3 0x72 0x72
+[v2] byte  4: e (0x65) score=2
+[v2] expected: e (0x65) second=r (0x72) score=0
+[v2] check 4 0x65 0x65
+[v2] byte  5: T (0x54) score=2
+[v2] expected: T (0x54) second=e (0x65) score=0
+[v2] check 5 0x54 0x54
+Core 0: [32mHIT GOOD TRAP at pc = 0x0
+[0m[35mCore-0 instrCnt = 660,259, cycleCnt = 1,075,846, IPC = 0.613711
+[0m[34mSeed=0 Guest cycle spent: 1,075,876 (this will be different from cycleCnt if emu loads a snapshot)
+[0m[34mHost time spent: 360,999ms
+[0m

@@ -1,0 +1,37 @@
+[profile-runner] stage=build
+[profile-runner] profile=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v2-privilege-kmhv2/profiles/sv48
+[profile-runner] processor=xiangshan-v2
+[profile-runner] poc_id=spectre-v2-privilege-kmhv2
+[profile-runner] vm_mode=sv48
+[profile-runner] run_id=20260720Tcanonical-v2priv-kmhv2-sv48
+[profile-runner] am_home=/nfs/home/leizhenyu/opt/verified_poc/.scratch/nexus-am-kmhv2
+[profile-runner] emu=/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v2-privilege-kmhv2/profiles/sv48/runtime/kmhv2-emu/emu
+[profile-runner] emu_runtime_dir=kmhv2-emu
+[profile-runner] emu_candidate_id=kmhv2-emu-16threads
+[profile-runner] emu_sha256=6ffccdb29be51b34133ed736075ca6a97cd006ead5ecb4dded599c06f7e67903
+[profile-runner] arch=riscv64-xs
+[profile-runner] march=rv64gc_zba_zbb_zbc_zbs_zbkb_zbkc_zbkx_zknd_zkne_zknh_zkr_zksed_zksh_zkt_zicbom_zicboz
+[profile-runner] cppflags=-DCACHE_HIT_THRESHOLD=60 -DUSE_FIXED_CACHE_HIT_THRESHOLD=1 -DSECRET_SZ=6 -DSECRET_OFFSET=0 -DV2_ATTACK_TRIES=8 -DV2_TRAINING_LOOPS=16 -DPROBE_CANDIDATES=62 -DFULL_BYTE_PROBE=0 -DEARLY_STOP=1 -DEARLY_STOP_MIN_SCORE=2 -DEARLY_STOP_GAP=1 -DV2_EARLY_STOP_STRICT=0 -DV2_PROBE_MIX=1 -DSTRICT_PAGE_TABLE_DEMO=1 -DATTACKER_MPP=0 -DDIRECT_SERVICE_CALL=0 -DUSE_AM_CTE=0 -DV2_ASM_ROUND=1 -DV2_FIXED_MARKER=-1 -DV2_BYTE_WARMUP_ROUNDS=0 -DV2_EXTRA_CHANNEL_FLUSHES=0 -DV2_ASM_CONTROL_ROUND=0 -DV2_PROBE_CONTROL_ROUND=0 -DV2_ASM_STYLE=0
+[profile-runner] parser_kind=v2_priv
+[profile-runner] expected_secret_len=6
+[profile-runner] constantin_mode=embedded
+[profile-runner] seed=0
+[profile-runner] stack_kb=32768
+[profile-runner] wall_timeout=20m
+make -C /nfs/home/leizhenyu/opt/verified_poc/.scratch/xiangshan-v2/spectre-v2-privilege-kmhv2/sv48/20260720Tcanonical-v2priv-kmhv2-sv48/source clean AM_HOME=/nfs/home/leizhenyu/opt/verified_poc/.scratch/nexus-am-kmhv2 ARCH=riscv64-xs
+make -C /nfs/home/leizhenyu/opt/verified_poc/.scratch/xiangshan-v2/spectre-v2-privilege-kmhv2/sv48/20260720Tcanonical-v2priv-kmhv2-sv48/source AM_HOME=/nfs/home/leizhenyu/opt/verified_poc/.scratch/nexus-am-kmhv2 ARCH=riscv64-xs LINUX_GNU_TOOLCHAIN=1 MARCH=rv64gc_zba_zbb_zbc_zbs_zbkb_zbkc_zbkx_zknd_zkne_zknh_zkr_zksed_zksh_zkt_zicbom_zicboz CC_OPT= CPPFLAGS=-DCACHE_HIT_THRESHOLD=60\ -DUSE_FIXED_CACHE_HIT_THRESHOLD=1\ -DSECRET_SZ=6\ -DSECRET_OFFSET=0\ -DV2_ATTACK_TRIES=8\ -DV2_TRAINING_LOOPS=16\ -DPROBE_CANDIDATES=62\ -DFULL_BYTE_PROBE=0\ -DEARLY_STOP=1\ -DEARLY_STOP_MIN_SCORE=2\ -DEARLY_STOP_GAP=1\ -DV2_EARLY_STOP_STRICT=0\ -DV2_PROBE_MIX=1\ -DSTRICT_PAGE_TABLE_DEMO=1\ -DATTACKER_MPP=0\ -DDIRECT_SERVICE_CALL=0\ -DUSE_AM_CTE=0\ -DV2_ASM_ROUND=1\ -DV2_FIXED_MARKER=-1\ -DV2_BYTE_WARMUP_ROUNDS=0\ -DV2_EXTRA_CHANNEL_FLUSHES=0\ -DV2_ASM_CONTROL_ROUND=0\ -DV2_PROBE_CONTROL_ROUND=0\ -DV2_ASM_STYLE=0 -j8
+make: Entering directory '/nfs/home/leizhenyu/opt/verified_poc/.scratch/xiangshan-v2/spectre-v2-privilege-kmhv2/sv48/20260720Tcanonical-v2priv-kmhv2-sv48/source'
+# Building spectre-v2-privilege [riscv64-xs] with AM_HOME {/nfs/home/leizhenyu/opt/verified_poc/.scratch/nexus-am-kmhv2}
+make[1]: Entering directory '/nfs/home/leizhenyu/opt/verified_poc/.scratch/nexus-am-kmhv2'
+make[1]: Entering directory '/nfs/home/leizhenyu/opt/verified_poc/.scratch/nexus-am-kmhv2/libs/klib'
++ CC src/spectre-v2.c
+# Building lib-klib [riscv64-xs]
+make[1]: Leaving directory '/nfs/home/leizhenyu/opt/verified_poc/.scratch/nexus-am-kmhv2/libs/klib'
+make[2]: Entering directory '/nfs/home/leizhenyu/opt/verified_poc/.scratch/nexus-am-kmhv2/am'
+# Building lib-am [riscv64-xs]
+make[2]: Leaving directory '/nfs/home/leizhenyu/opt/verified_poc/.scratch/nexus-am-kmhv2/am'
+make[1]: Leaving directory '/nfs/home/leizhenyu/opt/verified_poc/.scratch/nexus-am-kmhv2'
+# Creating binary image [riscv64-xs]
++ LD -> build/spectre-v2-privilege-riscv64-xs.elf
++ OBJCOPY -> build/spectre-v2-privilege-riscv64-xs.bin
+make: Leaving directory '/nfs/home/leizhenyu/opt/verified_poc/.scratch/xiangshan-v2/spectre-v2-privilege-kmhv2/sv48/20260720Tcanonical-v2priv-kmhv2-sv48/source'

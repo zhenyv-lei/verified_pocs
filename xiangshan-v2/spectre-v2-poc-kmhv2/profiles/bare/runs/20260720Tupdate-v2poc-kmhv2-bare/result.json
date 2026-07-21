@@ -1,0 +1,55 @@
+{
+  "status": "ASSERTION_PASS",
+  "parser_kind": "v2_basic",
+  "expected_secret": "S3CreT",
+  "observed_expected": "S3CreT",
+  "observed_guess": "S3CreT",
+  "rows": [
+    {
+      "index": 0,
+      "expected": "S",
+      "guess": "S",
+      "expected_hex": "53",
+      "guess_hex": "53"
+    },
+    {
+      "index": 1,
+      "expected": "3",
+      "guess": "3",
+      "expected_hex": "33",
+      "guess_hex": "33"
+    },
+    {
+      "index": 2,
+      "expected": "C",
+      "guess": "C",
+      "expected_hex": "43",
+      "guess_hex": "43"
+    },
+    {
+      "index": 3,
+      "expected": "r",
+      "guess": "r",
+      "expected_hex": "72",
+      "guess_hex": "72"
+    },
+    {
+      "index": 4,
+      "expected": "e",
+      "guess": "e",
+      "expected_hex": "65",
+      "guess_hex": "65"
+    },
+    {
+      "index": 5,
+      "expected": "T",
+      "guess": "T",
+      "expected_hex": "54",
+      "guess_hex": "54"
+    }
+  ],
+  "row_count": 6,
+  "isolation_ok": true,
+  "check_pass": true,
+  "log": "/nfs/home/leizhenyu/opt/verified_poc/xiangshan-v2/spectre-v2-poc-kmhv2/profiles/bare/runs/20260720Tupdate-v2poc-kmhv2-bare/run.log"
+}
