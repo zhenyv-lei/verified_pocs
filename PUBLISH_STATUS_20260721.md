@@ -46,27 +46,23 @@ Observed results:
 - Shell syntax checks: pass
 - Profile count: `11`
 
-## Push attempt
+## Published commit
 
-The commit was created locally, but GitHub push did not complete because this host
-could not reach GitHub:
+- Final published commit: `6d253dbacd04e098c9adfa1c932ce3abee665d36`
+- Subject: `Publish verified XiangShan POC profiles`
+- Branch: `main`
+- Remote: `ssh://git@ssh.github.com:443/zhenyv-lei/verified_pocs.git`
+- Push result: `302e2ea..6d253db HEAD -> main`
+- Large runtime binaries: tracked through Git LFS with
+  `**/runtime/**/emu filter=lfs diff=lfs merge=lfs -text`
 
-- `ssh://git@ssh.github.com:443/...`: connection timed out
-- `git@github.com:...` over port 22: connection timed out
-- `https://github.com/...` over port 443: connection timed out
-
-When network access is available, push with the BOSC proxy:
+The successful push used the BOSC IVP6 socks5 proxy for both SSH and Git LFS:
 
 ```bash
-cd /tmp/verified_pocs_publish_20260721
+cd /tmp/verified_pocs_publish_lfs_20260721
+git config --local http.proxy socks5h://172.38.10.247:8970
+git config --local https.proxy socks5h://172.38.10.247:8970
 GIT_SSH_COMMAND='ssh -o ConnectTimeout=30 -o ProxyCommand="nc -x 172.38.10.247:8970 -X 5 %h %p"' \
+  /nfs/home/leizhenyu/.codex/skills/bosc-ivp6-proxy-install/scripts/with_bosc_proxy.sh -- \
   git push ssh://git@ssh.github.com:443/zhenyv-lei/verified_pocs.git HEAD:main
-```
-
-If the `/tmp` worktree is gone, restore from the bundle:
-
-```bash
-git clone verified_pocs_publish_e8be3b2_20260721.bundle verified_pocs_publish_restore
-cd verified_pocs_publish_restore
-git push ssh://git@ssh.github.com:443/zhenyv-lei/verified_pocs.git main:main
 ```
